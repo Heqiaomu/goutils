@@ -1,7 +1,7 @@
 package conform
 
 import (
-	"git.hyperchain.cn/blocface/goutil/uiform/yaml"
+	"github.com/Heqiaomu/goutil/uiform/yaml"
 )
 
 type UIData struct {

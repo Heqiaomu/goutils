@@ -1,9 +1,9 @@
 package generate
 
 import (
-	"git.hyperchain.cn/blocface/goutil/uiform/conform"
-	v1 "git.hyperchain.cn/blocface/goutil/uiform/generate/v1"
-	"git.hyperchain.cn/blocface/goutil/uiform/yaml"
+	"github.com/Heqiaomu/goutil/uiform/conform"
+	v1 "github.com/Heqiaomu/goutil/uiform/generate/v1"
+	"github.com/Heqiaomu/goutil/uiform/yaml"
 	"github.com/Heqiaomu/protocol/ui"
 )
 

@@ -1,8 +1,8 @@
 package v1
 
 import (
-	"git.hyperchain.cn/blocface/goutil/uiform/conform"
-	"git.hyperchain.cn/blocface/goutil/uiform/yaml"
+	"github.com/Heqiaomu/goutil/uiform/conform"
+	"github.com/Heqiaomu/goutil/uiform/yaml"
 	"github.com/Heqiaomu/protocol/ui"
 	"github.com/golang/protobuf/ptypes"
 	"github.com/golang/protobuf/ptypes/wrappers"

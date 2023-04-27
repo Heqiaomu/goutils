@@ -9,7 +9,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	util "git.hyperchain.cn/blocface/goutil"
+	util "github.com/Heqiaomu/goutil"
 )
 
 // IsZip return true if file is zip

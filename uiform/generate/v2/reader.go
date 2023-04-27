@@ -2,10 +2,10 @@ package v2
 
 import (
 	"fmt"
-	"git.hyperchain.cn/blocface/goutil/uiform/conform"
-	v0 "git.hyperchain.cn/blocface/goutil/uiform/generate/v0"
-	v1 "git.hyperchain.cn/blocface/goutil/uiform/generate/v1"
-	"git.hyperchain.cn/blocface/goutil/uiform/yaml"
+	"github.com/Heqiaomu/goutil/uiform/conform"
+	v0 "github.com/Heqiaomu/goutil/uiform/generate/v0"
+	v1 "github.com/Heqiaomu/goutil/uiform/generate/v1"
+	"github.com/Heqiaomu/goutil/uiform/yaml"
 	"github.com/google/uuid"
 	"strconv"
 )

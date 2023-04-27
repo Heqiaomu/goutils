@@ -2,13 +2,13 @@ package generate
 
 import (
 	"fmt"
-	v0 "git.hyperchain.cn/blocface/goutil/uiform/generate/v0"
+	v0 "github.com/Heqiaomu/goutil/uiform/generate/v0"
 	"io/ioutil"
 	"os"
 	"path/filepath"
 	"strings"
 
-	"git.hyperchain.cn/blocface/goutil/uiform/yaml"
+	"github.com/Heqiaomu/goutil/uiform/yaml"
 	"github.com/golang/protobuf/jsonpb"
 
 	ui "github.com/Heqiaomu/protocol/ui"

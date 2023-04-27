@@ -2,10 +2,10 @@ package generate
 
 import (
 	"fmt"
-	"git.hyperchain.cn/blocface/goutil/uiform/conform"
-	v0 "git.hyperchain.cn/blocface/goutil/uiform/generate/v0"
-	"git.hyperchain.cn/blocface/goutil/uiform/generate/v1"
-	"git.hyperchain.cn/blocface/goutil/uiform/yaml"
+	"github.com/Heqiaomu/goutil/uiform/conform"
+	v0 "github.com/Heqiaomu/goutil/uiform/generate/v0"
+	"github.com/Heqiaomu/goutil/uiform/generate/v1"
+	"github.com/Heqiaomu/goutil/uiform/yaml"
 	yamlv2 "gopkg.in/yaml.v2"
 	"io/ioutil"
 	"path/filepath"

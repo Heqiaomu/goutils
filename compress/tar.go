@@ -10,7 +10,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	util "git.hyperchain.cn/blocface/goutil"
+	util "github.com/Heqiaomu/goutil"
 )
 
 // Tardir 压缩目录为tar.gz

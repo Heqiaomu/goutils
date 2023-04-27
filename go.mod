@@ -1,11 +1,11 @@
-module git.hyperchain.cn/blocface/goutil
+module github.com/Heqiaomu/goutil
 
-go 1.17
+go 1.18
 
 require (
 	bou.ke/monkey v1.0.2
-	github.com/Heqiaomu/protocol v1.0.0
 	github.com/Heqiaomu/glog v1.0.1
+	github.com/Heqiaomu/protocol v1.0.0
 	github.com/Masterminds/sprig v2.22.0+incompatible
 	github.com/agiledragon/gomonkey v2.0.2+incompatible
 	github.com/agiledragon/gomonkey/v2 v2.6.0

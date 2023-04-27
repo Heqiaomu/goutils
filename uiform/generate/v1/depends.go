@@ -3,8 +3,8 @@ package v1
 import (
 	"bytes"
 	"encoding/gob"
-	"git.hyperchain.cn/blocface/goutil/uiform/conform"
-	"git.hyperchain.cn/blocface/goutil/uiform/yaml"
+	"github.com/Heqiaomu/goutil/uiform/conform"
+	"github.com/Heqiaomu/goutil/uiform/yaml"
 	"path/filepath"
 	"strings"
 )

@@ -2,7 +2,7 @@ package generate
 
 import (
 	"fmt"
-	"git.hyperchain.cn/blocface/goutil/uiform/yaml"
+	"github.com/Heqiaomu/goutil/uiform/yaml"
 	"github.com/go-playground/validator/v10"
 	"path/filepath"
 	"strings"

@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"git.hyperchain.cn/blocface/goutil/stream/stream"
+	"github.com/Heqiaomu/goutil/stream/stream"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
 	"log"

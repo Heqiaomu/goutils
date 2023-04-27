@@ -1,9 +1,9 @@
 package v1
 
 import (
-	"git.hyperchain.cn/blocface/goutil/uiform/conform"
-	v0 "git.hyperchain.cn/blocface/goutil/uiform/generate/v0"
-	"git.hyperchain.cn/blocface/goutil/uiform/yaml"
+	"github.com/Heqiaomu/goutil/uiform/conform"
+	v0 "github.com/Heqiaomu/goutil/uiform/generate/v0"
+	"github.com/Heqiaomu/goutil/uiform/yaml"
 )
 
 // ReadUiformAction 将 uiformActionDir 目录下的fields.yaml、inputs.yaml、reactions.yaml读取成 UIData

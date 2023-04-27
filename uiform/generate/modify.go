@@ -3,7 +3,7 @@ package generate
 import (
 	"encoding/base64"
 	"fmt"
-	"git.hyperchain.cn/blocface/goutil/uiform/yaml"
+	"github.com/Heqiaomu/goutil/uiform/yaml"
 	"io/ioutil"
 	"path/filepath"
 )

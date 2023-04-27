@@ -3,13 +3,13 @@ package main
 import (
 	"flag"
 	"fmt"
-	v0 "git.hyperchain.cn/blocface/goutil/uiform/generate/v0"
+	v0 "github.com/Heqiaomu/goutil/uiform/generate/v0"
 	"io/ioutil"
 	"os"
 	"path/filepath"
 
-	"git.hyperchain.cn/blocface/goutil/uiform/conform"
-	"git.hyperchain.cn/blocface/goutil/uiform/generate"
+	"github.com/Heqiaomu/goutil/uiform/conform"
+	"github.com/Heqiaomu/goutil/uiform/generate"
 	"github.com/Heqiaomu/protocol/ui"
 	"github.com/golang/protobuf/jsonpb"
 )

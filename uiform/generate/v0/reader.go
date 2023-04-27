@@ -3,7 +3,7 @@ package v0
 import (
 	"bytes"
 	"fmt"
-	"git.hyperchain.cn/blocface/goutil/uiform/yaml"
+	"github.com/Heqiaomu/goutil/uiform/yaml"
 	yamlv2 "gopkg.in/yaml.v2"
 	"io/ioutil"
 	"os"

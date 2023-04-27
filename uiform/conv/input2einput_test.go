@@ -3,7 +3,7 @@ package conv
 import (
 	"encoding/json"
 	"fmt"
-	"git.hyperchain.cn/blocface/goutil/uiform/generate"
+	"github.com/Heqiaomu/goutil/uiform/generate"
 	"github.com/bitly/go-simplejson"
 	. "github.com/smartystreets/goconvey/convey"
 	"testing"

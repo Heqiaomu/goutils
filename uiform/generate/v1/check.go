@@ -2,8 +2,8 @@ package v1
 
 import (
 	"fmt"
-	"git.hyperchain.cn/blocface/goutil/uiform/conform"
-	v0 "git.hyperchain.cn/blocface/goutil/uiform/generate/v0"
+	"github.com/Heqiaomu/goutil/uiform/conform"
+	v0 "github.com/Heqiaomu/goutil/uiform/generate/v0"
 )
 
 // Check 检查yaml结构是否填写正确

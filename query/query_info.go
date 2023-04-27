@@ -2,7 +2,7 @@ package query
 
 import (
 	"fmt"
-	"git.hyperchain.cn/blocface/goutil/auth"
+	"github.com/Heqiaomu/goutil/auth"
 	"github.com/pkg/errors"
 	"reflect"
 	"regexp"

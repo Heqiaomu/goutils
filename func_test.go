@@ -11,7 +11,7 @@ func TestRunFuncName(t *testing.T) {
 	}{
 		{
 			"TestRunFuncName_1",
-			"git.hyperchain.cn/blocface/goutil.TestRunFuncName.func1",
+			"github.com/Heqiaomu/goutil.TestRunFuncName.func1",
 		},
 	}
 	for _, tt := range tests {
