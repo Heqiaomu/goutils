@@ -1,0 +1,39 @@
+logo: 'https://fabric.com/pic1'
+name:
+  id: fabric
+  text: 'Fabric链驱动'
+version: v1.0.0
+type: chain
+resources:  [chains,nodes]
+actions:
+  - name:
+      id: create
+      text: '创建'
+      desc: '创建Fabric联盟链'
+    target: chains
+  - name:
+      id: stop
+      text: '停止'
+    target: chains
+  - name:
+      id: start
+      text: '启动'
+    target: chains
+  - name:
+      id: restart
+      text: '启动'
+    target: chains
+  - name:
+      id: delete
+      text: '删除'
+    target: chains
+supports:
+  - name:
+      id: Fabric
+      text: 'Fabric'
+    list: [v1.4.1]
+  - name:
+      id: hosts
+      text: '主机驱动'
+    list: [k8sv1.0.0]
+exepath: 'exe'

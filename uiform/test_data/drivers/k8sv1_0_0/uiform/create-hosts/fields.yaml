@@ -1,0 +1,22 @@
+fields:
+  - id: 'host/Namespace'
+    title:
+      text: '命名空间'
+  - id: 'host/AutoCreatePV'
+    title:
+      text: '是否自动创建PV'
+  - id: 'host/ApplyStorageClass'
+    title:
+      text: '是否使用StorageClass'
+  - id: 'host/ApplyPVTemplate'
+    title:
+      text: '是否使用PV模板'
+  - id: 'host/StorageClassName'
+    title:
+      text: '提供StorageClass名称'
+  - id: 'host/PVTemplate'
+    title:
+      text: '提供PV模板'
+  - id: 'host/PVNameTemplate'
+    title:
+      text: '提供PV名称模板'

@@ -1,0 +1,4 @@
+fields:
+  - id: 'chain/name'
+    title:
+      text: '链名'

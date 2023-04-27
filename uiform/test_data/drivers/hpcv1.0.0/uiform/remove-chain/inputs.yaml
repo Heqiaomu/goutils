@@ -1,0 +1,5 @@
+inputs:
+  - id: 'chain/Input'
+    title:
+      text: '联盟配置'
+    fields: ['chain/name']

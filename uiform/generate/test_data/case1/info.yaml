@@ -1,0 +1,106 @@
+name:
+  id:
+#  text: 'Hyperchain'
+version: v1_0_5
+type:
+resources: [chains,node]
+logo: ./Hyperchain.svg
+actions:
+  - id: create-chains
+    name:
+      id: create
+      text: '创建'
+      desc: '创建Hyperchain'
+    target: chains
+  - id: start-chain
+    name:
+      id: start
+      text: '启用'
+      desc: '启用Hyperchain'
+    target: chain
+    states: [stopped]
+  - id: stop-chain
+    name:
+      id: stop
+      text: '停用'
+      desc: '停用Hyperchain'
+    target: chain
+    states: [available]
+  - id: restart-chain
+    name:
+      id: restart
+      text: '重启'
+      desc: '重启Hyperchain'
+    target: chain
+    states: [available]
+  - id: remove-chain
+    name:
+      id: remove
+      text: '删除'
+      desc: '删除Hyperchain'
+    target: chain
+    states: [unavailable, available, stoppe]
+  - id: start-node
+    name:
+      id: start
+      text: '启用'
+      desc: '启用Hyperchain节点'
+    target: node
+    states: [stopped]
+  - id: stop-node
+    name:
+      id: stop
+      text: '停用'
+      desc: '停用Hyperchain节点'
+    target: node
+    states: [available]
+  - id: restart-node
+    name:
+      id: restart
+      text: '重启'
+      desc: '重启Hyperchain节点'
+    target:
+    states: [available]
+  - id: remove-node
+    name:
+      id: remove
+      text: '删除'
+      desc: '删除Hyperchain节点'
+    target: node
+    states: [unavailable, available, stopped]
+  - id: add-node
+    name:
+      id: add
+      text: '新增'
+      desc: '新增Hyperchain节点'
+    target: node
+  - id: config-node
+    name:
+      id: config
+      text: '配置'
+      desc: '配置Hyperchain节点'
+    target: node
+    states: [unavailable, available, stopped]
+  - id: config-chain
+    name:
+      id: config
+      text: '配置'
+      desc: '配置Hyperchain'
+    target: chain
+    states: [unavailable, available, stopped]
+  - id: upgrade-chain
+    name:
+      id: upgrade
+      text: '升级驱动'
+      desc: '升级hyperchain驱动'
+    target: chain
+    states: [unavailable, available, stopped]
+  - id: downloadConfig-node
+    name:
+      id: downloadConfig
+      text: '下载配置文件'
+      desc: '下载节点的客户端链接配置文件'
+    target: node
+    states: [unavailable, available, stopped]
+exePath: 'exe/driver'
+id: hpcv1_0_5

@@ -1,0 +1,98 @@
+inputs:
+  - id: 'chain/Input'
+    title:
+      text: '联盟配置'
+    sub: ['chain/base/Input', 'chain/advance/Input', 'nodes/Input']
+
+  - id: 'chain/base/Input'
+    sub: ['chain/self/Input']
+
+  - id: 'chain/self/Input'
+    fields: ['chain/name', 'chain/consensus']
+
+  - id: 'chain/advance/Input'
+    fields: [
+      'chain/channel',
+      'chain/tlsEnable',
+      'chain/implementation',
+      'chain/ordererBatchTimeout',
+      'chain/ordererMaxMessageCount',
+      'chain/ordererAbsoluteMaxBytes',
+      'chain/ordererPreferredMaxBytes'
+    ]
+
+  - id: 'chain/consensus/solo/nodes/Input'
+    fields: ['chain/nodeCount/orderer', 'chain/nodeCount/peer']
+  - id: 'chain/consensus/kafka/nodes/Input'
+    fields: ['chain/nodeCount/orderer', 'chain/nodeCount/peer', 'chain/nodeCount/kafka', 'chain/nodeCount/zookeeper']
+  - id: 'chain/consensus/raft/nodes/Input'
+    fields: ['chain/nodeCount/orderer', 'chain/nodeCount/peer']
+
+
+  - id: 'nodes/Input'
+    title:
+      text: '部署配置'
+    type: 'list'
+    sub: []
+  - id: 'nodes/consensus/solo/Input'
+    type: 'tableMerge'
+    sub: ['nodes/orderer/${index}/Input', 'nodes/peer/${index}/Input']
+  - id: 'nodes/consensus/kafka/Input'
+    type: 'tableMerge'
+    sub: ['nodes/orderer/${index}/Input', 'nodes/peer/${index}/Input', 'nodes/kafka/${index}/Input','nodes/zookeeper/${index}/Input']
+  - id: 'nodes/consensus/raft/Input'
+    type: 'tableMerge'
+    sub: ['nodes/orderer/${index}/Input', 'nodes/peer/${index}/Input']
+
+  - id: 'nodes/orderer/${index}/Input'
+    type: 'table'
+    sub: []
+  - id: 'nodes/peer/${index}/Input'
+    type: 'table'
+    sub: []
+  - id: 'nodes/kafka/${index}/Input'
+    type: 'table'
+    sub: []
+  - id: 'nodes/zookeeper/${index}/Input'
+    type: 'table'
+    sub: []
+
+  - id: 'chain/nodeCount/orderer/${index}/Input'
+    type: 'tableRow'
+    fields: ['nodes/orderer/${index}/name','nodes/orderer/${index}/type', 'nodes/orderer/${index}/Button']
+
+  - id: 'chain/nodeCount/peer/${index}/Input'
+    type: 'tableRow'
+    fields: ['nodes/peer/${index}/name','nodes/peer/${index}/type', 'nodes/peer/${index}/Button']
+
+  - id: 'chain/nodeCount/kafka/${index}/Input'
+    type: 'tableRow'
+    fields: ['nodes/kafka/${index}/name','nodes/kafka/${index}/type', 'nodes/kafka/${index}/Button']
+
+  - id: 'chain/nodeCount/zookeeper/${index}/Input'
+    type: 'tableRow'
+    fields: ['nodes/zookeeper/${index}/name','nodes/zookeeper/${index}/type', 'nodes/zookeeper/${index}/Button']
+
+  - id:   'nodes/orderer/${index}/advance/Input'
+    title:
+      text: 'node高级配置'
+    fields: []
+    depend: 'hosts'
+
+  - id:   'nodes/peer/${index}/advance/Input'
+    title:
+      text: 'node高级配置'
+    fields: ['node/orgName']
+    depend: 'hosts'
+
+  - id:   'nodes/kafka/${index}/advance/Input'
+    title:
+      text: 'node高级配置'
+    fields: []
+    depend: 'hosts'
+
+  - id:   'nodes/zookeeper/${index}/advance/Input'
+    title:
+      text: 'node高级配置'
+    fields: []
+    depend: 'hosts'

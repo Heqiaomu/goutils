@@ -1,0 +1,32 @@
+name:
+  id: hpc
+  text: 'Hyperchain'
+version: v1.0.0
+type: host
+resources: [chains,nodes]
+logo: ./Hyperchain.svg
+actions:
+  - name:
+      id: create
+      text: '创建'
+      desc: '创建Hyperchain'
+    target: chains
+  - name:
+      id: start
+      text: '启动'
+      desc: '启动Hyperchain'
+    target: chain
+    states: [unavailable]
+  - name:
+      id: stop
+      text: '停止'
+      desc: '停止Hyperchain'
+    target: chain
+    states: [available]
+  - name:
+      id: remove
+      text: '删除'
+      desc: '删除Hyperchain'
+    target: chain
+    states: [unavailable, available, stoped]
+exepath: 'exe'

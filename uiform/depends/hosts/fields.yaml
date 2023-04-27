@@ -1,0 +1,17 @@
+fields:
+  - id: 'hosts/mode'
+    title:
+      text: '配置模式'
+    type: 'radioButton'
+    default: ['ExistedHost']
+    validate:
+      options:
+#        - id: 'DepositHost'
+#          text: '托管主机'g
+        - id: 'ExistedHost'
+          text: '已有主机'
+        - id: 'CreateHost'
+          text: '创建主机'
+      maxCount: 1
+      minCount: 1
+      holder: '请选择'

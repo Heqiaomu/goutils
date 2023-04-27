@@ -1,0 +1,19 @@
+name:
+  id: huawei
+  text: '华为云'
+version: v1.0.0
+type: host
+resources: [hosts,credentials]
+actions:
+  - id: create-hosts
+    name:
+      id: create
+      text: '创建'
+      desc: '创建华为云'
+    target: hosts
+  - id: create-credentials
+    name:
+      id: create
+      text: '创建凭证'
+      desc: '创建凭证'
+    target: credentials

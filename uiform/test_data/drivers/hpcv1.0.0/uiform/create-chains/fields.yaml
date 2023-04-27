@@ -1,0 +1,212 @@
+fields:
+  - id: 'chain/name'
+    title:
+      text: "联盟链名称"
+    type: "input"
+    validate:
+      desc: '2-20个汉字、字母和数字至少包含1种'
+      require: true
+      requireDesc: '请输入联盟链名称'
+      regex: '^[a-zA-Z0-9\u4e00-\u9fa5]{2,20}$'
+      regexDesc: '请输入符合格式的联盟链名称'
+      holder: '请输入'
+
+  - id: 'chain/organization'
+    title:
+      text: "初始组织"
+      desc: '初始组织是创建联盟链用户所在的组织。'
+    type: "input"
+    edit: false
+    default: ['${user.organization}']
+
+  - id: 'chain/consensus'
+    title:
+      text: "共识算法"
+      desc: '目前Hyperchain共识模块在实现了PBFT算法的改进版本RBFT（Robust Byzantine Fault Tolerant），该算法基于AllenClement等人在2009年提出的Aardvark算法进行改进，在保证BFT系统强一致性的前提下，提升了系统的整体交易吞吐能力以及系统稳定性。'
+    type: "radioButton"
+    default: ['RBFT']
+    validate:
+      maxCount: 1
+      minCount: 1
+      options:
+        - id: 'RBFT'
+          text: "RBFT"
+
+  - id: 'chain/nodeCount/VP'
+    title:
+      text: "VP"
+    type: "numberInput"
+    default: [1]
+    validate:
+      desc: "请输入1-4个 VP 数量"
+      step: 1
+      max: 4
+      min: 1
+
+  - id: 'chain/implementation'
+    title:
+      text: "区块链版本"
+    type: "select"
+    default: ['Hyperchain v1.8.5']
+    validate:
+      maxCount: 1
+      minCount: 1
+      options:
+        - text: "Hyperchain v1.8.5"
+          id: 'Hyperchain v1.8.5'
+
+  - id: 'chain/crypto'
+    title:
+      text: "加密算法"
+      desc: '国密即国家密码局认定的国产密码算法，主要有 SM1、SM2、SM3、SM4，SM1 为对称加密、SM2 为非对称加密、SM3为消息摘要、SM4为分组密码算法；非国密包含非对称加密算法RSA、ECDSA，消息摘要算法MD5、SHA-256，以及分组密码算法AES。'
+    type: "radioButton"
+    default: ['sm2']
+    validate:
+      maxCount: 1
+      minCount: 1
+      options:
+        - id: 'sm2'
+          text: '国密'
+        - id: 'ecdsa'
+          text: '非国密'
+
+  - id: 'chain/namespace'
+    title:
+      text: "命名空间"
+    type: "input"
+    default: ['global']
+    validate:
+      desc: '2-20个汉字、字母和数字至少包含1种'
+      requireDesc: '请输入命名空间名称'
+      regex: '^[a-zA-Z0-9\u4e00-\u9fa5]{2,20}$'
+      regexDesc: '请输入符合格式的命名空间名称'
+      holder: '请输入'
+
+  - id: 'chain/ca'
+    title:
+      text: "CA机构"
+    type: "radioButton"
+    default: ['Hyperchain CA']
+    validate:
+      maxCount: 1
+      minCount: 1
+      options:
+        - id: 'Hyperchain CA'
+          text: "Hyperchain CA"
+
+  - id: 'chain/packageSize'
+    title:
+      text: "打包尺寸"
+    type: "numberInput"
+    default: ["500"]
+    validate:
+      min: 1
+      max: 500
+      mid: 250
+      step: 1
+      unit: '笔'
+
+  - id: 'chain/packageTime'
+    title:
+      text: "打包时间"
+    type: "numberInput"
+    default: ["500"]
+    validate:
+      min: 50
+      max: 1000
+      mid: 525
+      step: 1
+      unit: '毫秒'
+
+  - id: 'nodes/VP/${index}/name'
+    edit: false
+    title:
+      text: '节点名'
+    default: ['VP${index}']
+
+  - id: 'nodes/VP/${index}/type'
+    edit: false
+    title:
+      text: '节点类型'
+    default: ['VP节点']
+
+  - id: 'nodes/VP/${index}/Button'
+    type: 'button'
+    title:
+      text: '操作'
+    default: ['配置']
+
+  - id: 'nodes/VP/${index}/jsonRpcPort'
+    title:
+      text: 'JSON RPC 端口'
+    type: 'numberInput'
+    default: [8081]
+    validate:
+      min: 1
+      max: 65525
+      step: 1
+
+  - id: 'nodes/VP/${index}/restfulRpcPort'
+    title:
+      text: 'Restful 端口'
+    type: 'numberInput'
+    default: [10010]
+    validate:
+      min: 1
+      max: 65525
+      step: 1
+
+  - id: 'nodes/VP/${index}/websocketPort'
+    title:
+      text: 'Websocket 端口'
+    type: 'numberInput'
+    default: [30031]
+    validate:
+      min: 1
+      max: 65525
+      step: 1
+
+  - id: 'nodes/VP/${index}/jvmPort'
+    title:
+      text: 'JVM 端口'
+    type: 'numberInput'
+    default: [9001]
+    validate:
+      min: 1
+      max: 65525
+      step: 1
+
+  - id: 'nodes/VP/${index}/ledgerPort'
+    title:
+      text: 'Ledger 端口'
+    type: 'numberInput'
+    default: [22021]
+    validate:
+      min: 1
+      max: 65525
+      step: 1
+
+  - id: 'nodes/VP/${index}/gRpcPort'
+    title:
+      text: 'gRPC 端口'
+    type: 'numberInput'
+    default: [44081]
+    validate:
+      min: 1
+      max: 65525
+      step: 1
+
+  - id: 'nodes/VP/${index}/domain'
+    title:
+      text: '节点所在域名'
+    validate:
+      holder: '请输入'
+
+  - id: 'nodes/VP/${index}/domains'
+    title:
+      text: '所有域信息'
+    type: 'inputs'
+    validate:
+      holder: '请输入'
+      maxCount: 4
+      minCount: 1

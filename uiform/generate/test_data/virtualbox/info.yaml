@@ -1,0 +1,56 @@
+name:
+  id: virtualbox
+  text: 'Virtualbox'
+version: v1_1_9
+type: host
+resources: [hosts,credentials]
+logo: ./virtualbox.svg
+actions:
+  - id: create-hosts
+    name:
+      id: create
+      text: '创建'
+      desc: '创建virtualbox'
+    target: hosts
+  - id: remove-host
+    name:
+      id: remove
+      text: '删除'
+      desc: '删除virtualbox'
+    target: host
+    states: [unavailable, available, stopped]
+  - id: stop-host
+    name:
+      id: stop
+      text: '停用'
+      desc: '停用virtualbox'
+    target: host
+    states: [available]
+  - id: start-host
+    name:
+      id: start
+      text: '启用'
+      desc: '启用virtualbox'
+    target: host
+    states: [stopped]
+  - id: restart-host
+    name:
+      id: restart
+      text: '重启'
+      desc: '重启virtualbox'
+    target: host
+    states: [available]
+  - id: create-credentials
+    name:
+      id: create
+      text: '创建凭证'
+      desc: '创建凭证'
+    target: credentials
+  - id: upgrade-host
+    name:
+      id: upgrade
+      text: '升级驱动'
+      desc: '升级驱动'
+    target: host
+    states: [unavailable, available, stopped]
+exePath: './driver.lua'

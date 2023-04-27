@@ -1,0 +1,12 @@
+inputs:
+  - id: 'host/Input'
+    title:
+      text: '创建主机'
+    fields: ['host/Namespace',
+             'host/AutoCreatePV',
+             'host/ApplyStorageClass',
+             'host/ApplyPVTemplate',
+             'host/StorageClassName',
+             'host/PVTemplate',
+             'host/PVNameTemplate']
+    depend: 'credentials'

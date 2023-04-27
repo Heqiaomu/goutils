@@ -1,0 +1,7 @@
+fields:
+  - id: 'host/name'
+    title:
+      text: '主机名'
+  - id: 'host/form_sdk_zone'
+    title:
+      text: '域名'

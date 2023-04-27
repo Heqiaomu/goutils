@@ -1,0 +1,5 @@
+inputs:
+  - id: 'host/Input'
+    title:
+      text: '主机配置'
+    fields: ['host/name', 'host/form_sdk_zone']

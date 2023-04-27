@@ -1,0 +1,16 @@
+fields:
+  - id: 'host/servername'
+    title:
+      text: '主机名称'
+  - id: 'host/zone'
+    title:
+      text: '部署区域'
+  - id: 'host/bandwidth'
+    title:
+      text: '网络带宽'
+  - id: 'host/rootdisk'
+    title:
+      text: '系统硬盘'
+  - id: 'host/datadisk'
+    title:
+      text: '数据硬盘'

@@ -1,0 +1,35 @@
+name:
+  id: k8s
+  text: 'Kubernetes'
+version: v1_0_7
+type: host
+resources: [hosts,credentials]
+logo: ./K8S.svg
+actions:
+  - id: create-hosts
+    name:
+      id: create
+      text: '创建'
+      desc: '创建Kubernetes'
+    target: hosts
+  - id: remove-host
+    name:
+      id: remove
+      text: '删除'
+      desc: '删除Kubernetes'
+    target: host
+    states: [unavailable, available, stopped]
+  - id: create-credentials
+    name:
+      id: create
+      text: '创建凭证'
+      desc: '创建凭证'
+    target: credentials
+  - id: upgrade-host
+    name:
+      id: upgrade
+      text: '升级驱动'
+      desc: '升级驱动'
+    target: host
+    states: [unavailable, available, stopped]
+exePath: './driver.lua'

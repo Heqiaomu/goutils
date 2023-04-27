@@ -1,0 +1,26 @@
+fields:
+  - id: 'chain/mode'
+    title:
+      text: "联盟链名称"
+    type: "radioButton"
+    default: ['A']
+    validate:
+      maxCount: 1
+      minCount: 1
+      options:
+        - id: 'A'
+          text: "A"
+        - id: 'B'
+          text: "B"
+
+  - id: 'chain/name'
+    title:
+      text: "联盟链名称"
+    type: "input"
+    validate:
+      desc: '2-20个汉字、字母和数字至少包含1种'
+      require: true
+      requireDesc: '请输入联盟链名称'
+      regex: '^[a-zA-Z0-9\u4e00-\u9fa5]{2,20}$'
+      regexDesc: '请输入符合格式的联盟链名称'
+      holder: '请输入'

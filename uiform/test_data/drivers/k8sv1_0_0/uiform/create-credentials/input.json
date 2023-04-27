@@ -1,0 +1,24 @@
+{
+  "id": "credential/Input",
+  "title": {
+    "text": "创建凭证"
+  },
+  "fold": false,
+  "showType": "list",
+  "fields": [
+    {
+      "id": "credential/kubeConfig",
+      "title": {
+        "text": "k8s 配置文件"
+      },
+      "edit": true,
+      "value": [
+        ""
+      ],
+      "defaultValue": [
+        ""
+      ],
+      "inputType": "input"
+    }
+  ]
+}

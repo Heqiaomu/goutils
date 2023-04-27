@@ -1,0 +1,620 @@
+{
+  "id": "chain/Input",
+  "fold": false,
+  "showType": "list",
+  "subInputs": [
+    {
+      "id": "chain/self/Input",
+      "title": {
+        "text": "联盟配置"
+      },
+      "fold": false,
+      "showType": "list",
+      "subInputs": [
+        {
+          "id": "chain/base/Input",
+          "fold": false,
+          "showType": "list",
+          "fields": [
+            {
+              "id": "chain/name",
+              "title": {
+                "text": "联盟链名称"
+              },
+              "edit": true,
+              "value": [
+                ""
+              ],
+              "defaultValue": [
+                ""
+              ],
+              "inputType": "input",
+              "validate": {
+                "@type": "type.googleapis.com/ui.ValidateInput",
+                "validateDes": "2-20个汉字、字母和数字至少包含1种",
+                "require": true,
+                "requireDes": "请输入联盟链名称",
+                "regex": "^[a-zA-Z0-9\\u4e00-\\u9fa5]{2,20}$",
+                "regexDes": "请输入符合格式的联盟链名称",
+                "placeHolder": "请输入"
+              }
+            },
+            {
+              "id": "chain/organization",
+              "title": {
+                "text": "初始组织",
+                "description": "初始组织是创建联盟链用户所在的组织。"
+              },
+              "edit": false,
+              "value": [
+                ""
+              ],
+              "defaultValue": [
+                "${user.organization}"
+              ],
+              "inputType": "input"
+            },
+            {
+              "id": "chain/consensus",
+              "title": {
+                "text": "共识算法",
+                "description": "目前Hyperchain共识模块在实现了PBFT算法的改进版本RBFT（Robust Byzantine Fault Tolerant），该算法基于AllenClement等人在2009年提出的Aardvark算法进行改进，在保证BFT系统强一致性的前提下，提升了系统的整体交易吞吐能力以及系统稳定性。"
+              },
+              "edit": true,
+              "value": [
+                ""
+              ],
+              "defaultValue": [
+                "RBFT"
+              ],
+              "inputType": "radioButton",
+              "validate": {
+                "@type": "type.googleapis.com/ui.ValidateSelect",
+                "require": true,
+                "options": [
+                  {
+                    "id": "RBFT",
+                    "text": "RBFT"
+                  }
+                ],
+                "maxCount": "1",
+                "minCount": "1"
+              }
+            }
+          ]
+        },
+        {
+          "id": "chain/advance/Input",
+          "title": {
+            "text": "高级选项"
+          },
+          "fold": true,
+          "showType": "list",
+          "fields": [
+            {
+              "id": "chain/implementation",
+              "title": {
+                "text": "区块链版本"
+              },
+              "edit": true,
+              "value": [
+                ""
+              ],
+              "defaultValue": [
+                "Hyperchain v1.8.5"
+              ],
+              "inputType": "select",
+              "validate": {
+                "@type": "type.googleapis.com/ui.ValidateSelect",
+                "require": true,
+                "options": [
+                  {
+                    "id": "Hyperchain v1.8.5",
+                    "text": "Hyperchain v1.8.5"
+                  }
+                ],
+                "maxCount": "1",
+                "minCount": "1"
+              }
+            },
+            {
+              "id": "chain/crypto",
+              "title": {
+                "text": "加密算法",
+                "description": "国密即国家密码局认定的国产密码算法，主要有 SM1、SM2、SM3、SM4，SM1 为对称加密、SM2 为非对称加密、SM3为消息摘要、SM4为分组密码算法；非国密包含非对称加密算法RSA、ECDSA，消息摘要算法MD5、SHA-256，以及分组密码算法AES。"
+              },
+              "edit": true,
+              "value": [
+                ""
+              ],
+              "defaultValue": [
+                "sm2"
+              ],
+              "inputType": "radioButton",
+              "validate": {
+                "@type": "type.googleapis.com/ui.ValidateSelect",
+                "require": true,
+                "options": [
+                  {
+                    "id": "sm2",
+                    "text": "国密"
+                  },
+                  {
+                    "id": "ecdsa",
+                    "text": "非国密"
+                  }
+                ],
+                "maxCount": "1",
+                "minCount": "1"
+              }
+            },
+            {
+              "id": "chain/namespace",
+              "title": {
+                "text": "命名空间"
+              },
+              "edit": true,
+              "value": [
+                ""
+              ],
+              "defaultValue": [
+                "global"
+              ],
+              "inputType": "input",
+              "validate": {
+                "@type": "type.googleapis.com/ui.ValidateInput",
+                "validateDes": "2-20个汉字、字母和数字至少包含1种",
+                "require": true,
+                "requireDes": "请输入命名空间名称",
+                "regex": "^[a-zA-Z0-9\\u4e00-\\u9fa5]{2,20}$",
+                "regexDes": "请输入符合格式的命名空间名称",
+                "placeHolder": "请输入"
+              }
+            },
+            {
+              "id": "chain/ca",
+              "title": {
+                "text": "CA机构"
+              },
+              "edit": true,
+              "value": [
+                ""
+              ],
+              "defaultValue": [
+                "Hyperchain CA"
+              ],
+              "inputType": "radioButton",
+              "validate": {
+                "@type": "type.googleapis.com/ui.ValidateSelect",
+                "require": true,
+                "options": [
+                  {
+                    "id": "Hyperchain CA",
+                    "text": "Hyperchain CA"
+                  }
+                ],
+                "maxCount": "1",
+                "minCount": "1"
+              }
+            },
+            {
+              "id": "chain/packageSize",
+              "title": {
+                "text": "打包尺寸"
+              },
+              "edit": true,
+              "value": [
+                ""
+              ],
+              "defaultValue": [
+                "500"
+              ],
+              "inputType": "numberInput",
+              "validate": {
+                "@type": "type.googleapis.com/ui.ValidateNumber",
+                "require": true,
+                "step": "1",
+                "max": "500",
+                "min": "1",
+                "mid": "250",
+                "unit": "笔"
+              }
+            },
+            {
+              "id": "chain/packageTime",
+              "title": {
+                "text": "打包时间"
+              },
+              "edit": true,
+              "value": [
+                ""
+              ],
+              "defaultValue": [
+                "500"
+              ],
+              "inputType": "numberInput",
+              "validate": {
+                "@type": "type.googleapis.com/ui.ValidateNumber",
+                "require": true,
+                "step": "1",
+                "max": "1000",
+                "min": "50",
+                "mid": "525",
+                "unit": "毫秒"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chain/nodes/Input",
+      "title": {
+        "text": "节点配置"
+      },
+      "fold": false,
+      "showType": "list",
+      "fields": [
+        {
+          "id": "chain/nodeCount/VP",
+          "title": {
+            "text": "VP"
+          },
+          "edit": true,
+          "value": [
+            ""
+          ],
+          "defaultValue": [
+            "1"
+          ],
+          "inputReacts": [
+            {
+              "triggerRegex": "\\d+",
+              "reactType": "showInputsByNumber",
+              "inputs": [
+                {
+                  "id": "chain/nodeCount/VP/${index}/Input",
+                  "fold": false,
+                  "showType": "tableRow",
+                  "fields": [
+                    {
+                      "id": "nodes/VP/${index}/name",
+                      "title": {
+                        "text": "节点名"
+                      },
+                      "edit": false,
+                      "value": [
+                        ""
+                      ],
+                      "defaultValue": [
+                        "VP${index}"
+                      ],
+                      "inputType": "input"
+                    },
+                    {
+                      "id": "nodes/VP/${index}/type",
+                      "title": {
+                        "text": "节点类型"
+                      },
+                      "edit": false,
+                      "value": [
+                        ""
+                      ],
+                      "defaultValue": [
+                        "VP节点"
+                      ],
+                      "inputType": "input"
+                    },
+                    {
+                      "id": "nodes/VP/${index}/Button",
+                      "title": {
+                        "text": "操作"
+                      },
+                      "edit": true,
+                      "value": [
+                        ""
+                      ],
+                      "defaultValue": [
+                        "配置"
+                      ],
+                      "inputReacts": [
+                        {
+                          "triggerRegex": ".*",
+                          "reactType": "showInput",
+                          "inputs": [
+                            {
+                              "id": "nodes/VP/${index}/advance/depend/Input",
+                              "fold": false,
+                              "showType": "list",
+                              "subInputs": [
+                                {
+                                  "id": "nodes/VP/${index}/advance/depend/hosts/Input",
+                                  "title": {
+                                    "text": "主机配置"
+                                  },
+                                  "fold": false,
+                                  "showType": "list",
+                                  "fields": [
+                                    {
+                                      "id": "nodes/VP/${index}/advance/hosts/mode",
+                                      "title": {
+                                        "text": "配置模式"
+                                      },
+                                      "edit": true,
+                                      "value": [
+                                        ""
+                                      ],
+                                      "defaultValue": [
+                                        "DepositHost"
+                                      ],
+                                      "inputReacts": [
+                                        {
+                                          "triggerRegex": "DepositHost",
+                                          "reactType": "showInput",
+                                          "urlReact": {
+                                            "method": "get",
+                                            "url": "/resources/drivers/functions/deposit-host"
+                                          }
+                                        },
+                                        {
+                                          "triggerRegex": "ExistedHost",
+                                          "reactType": "showInput",
+                                          "urlReact": {
+                                            "method": "get",
+                                            "url": "/resources/hosts/functions/id-list"
+                                          }
+                                        },
+                                        {
+                                          "triggerRegex": "CreateHost",
+                                          "reactType": "showInput",
+                                          "urlReact": {
+                                            "method": "get",
+                                            "url": "/resources/drivers/functions/create-host"
+                                          }
+                                        }
+                                      ],
+                                      "inputType": "radioButton",
+                                      "validate": {
+                                        "@type": "type.googleapis.com/ui.ValidateSelect",
+                                        "validateDes": "请选择1个主机的配置模式",
+                                        "require": true,
+                                        "options": [
+                                          {
+                                            "id": "DepositHost",
+                                            "text": "托管主机"
+                                          },
+                                          {
+                                            "id": "ExistedHost",
+                                            "text": "已有主机"
+                                          },
+                                          {
+                                            "id": "CreateHost"
+                                          },
+                                          {
+                                            "text": "创建主机"
+                                          }
+                                        ],
+                                        "maxCount": "1",
+                                        "minCount": "1"
+                                      }
+                                    }
+                                  ]
+                                },
+                                {
+                                  "id": "nodes/VP/${index}/advance/Input",
+                                  "title": {
+                                    "text": "节点配置"
+                                  },
+                                  "fold": false,
+                                  "showType": "list",
+                                  "fields": [
+                                    {
+                                      "id": "nodes/VP/${index}/jsonRpcPort",
+                                      "title": {
+                                        "text": "JSON RPC 端口"
+                                      },
+                                      "edit": true,
+                                      "value": [
+                                        ""
+                                      ],
+                                      "defaultValue": [
+                                        "8081"
+                                      ],
+                                      "inputType": "numberInput",
+                                      "validate": {
+                                        "@type": "type.googleapis.com/ui.ValidateNumber",
+                                        "require": true,
+                                        "step": "1",
+                                        "max": "65525",
+                                        "min": "1"
+                                      }
+                                    },
+                                    {
+                                      "id": "nodes/VP/${index}/restfulRpcPort",
+                                      "title": {
+                                        "text": "Restful 端口"
+                                      },
+                                      "edit": true,
+                                      "value": [
+                                        ""
+                                      ],
+                                      "defaultValue": [
+                                        "10010"
+                                      ],
+                                      "inputType": "numberInput",
+                                      "validate": {
+                                        "@type": "type.googleapis.com/ui.ValidateNumber",
+                                        "require": true,
+                                        "step": "1",
+                                        "max": "65525",
+                                        "min": "1"
+                                      }
+                                    },
+                                    {
+                                      "id": "nodes/VP/${index}/websocketPort",
+                                      "title": {
+                                        "text": "Websocket 端口"
+                                      },
+                                      "edit": true,
+                                      "value": [
+                                        ""
+                                      ],
+                                      "defaultValue": [
+                                        "30031"
+                                      ],
+                                      "inputType": "numberInput",
+                                      "validate": {
+                                        "@type": "type.googleapis.com/ui.ValidateNumber",
+                                        "require": true,
+                                        "step": "1",
+                                        "max": "65525",
+                                        "min": "1"
+                                      }
+                                    },
+                                    {
+                                      "id": "nodes/VP/${index}/jvmPort",
+                                      "title": {
+                                        "text": "JVM 端口"
+                                      },
+                                      "edit": true,
+                                      "value": [
+                                        ""
+                                      ],
+                                      "defaultValue": [
+                                        "9001"
+                                      ],
+                                      "inputType": "numberInput",
+                                      "validate": {
+                                        "@type": "type.googleapis.com/ui.ValidateNumber",
+                                        "require": true,
+                                        "step": "1",
+                                        "max": "65525",
+                                        "min": "1"
+                                      }
+                                    },
+                                    {
+                                      "id": "nodes/VP/${index}/ledgerPort",
+                                      "title": {
+                                        "text": "Ledger 端口"
+                                      },
+                                      "edit": true,
+                                      "value": [
+                                        ""
+                                      ],
+                                      "defaultValue": [
+                                        "22021"
+                                      ],
+                                      "inputType": "numberInput",
+                                      "validate": {
+                                        "@type": "type.googleapis.com/ui.ValidateNumber",
+                                        "require": true,
+                                        "step": "1",
+                                        "max": "65525",
+                                        "min": "1"
+                                      }
+                                    },
+                                    {
+                                      "id": "nodes/VP/${index}/gRpcPort",
+                                      "title": {
+                                        "text": "gRPC 端口"
+                                      },
+                                      "edit": true,
+                                      "value": [
+                                        ""
+                                      ],
+                                      "defaultValue": [
+                                        "44081"
+                                      ],
+                                      "inputType": "numberInput",
+                                      "validate": {
+                                        "@type": "type.googleapis.com/ui.ValidateNumber",
+                                        "require": true,
+                                        "step": "1",
+                                        "max": "65525",
+                                        "min": "1"
+                                      }
+                                    },
+                                    {
+                                      "id": "nodes/VP/${index}/domain",
+                                      "title": {
+                                        "text": "节点所在域名"
+                                      },
+                                      "edit": true,
+                                      "value": [
+                                        ""
+                                      ],
+                                      "defaultValue": [
+                                        ""
+                                      ],
+                                      "inputType": "input",
+                                      "validate": {
+                                        "@type": "type.googleapis.com/ui.ValidateInput",
+                                        "require": true,
+                                        "placeHolder": "请输入"
+                                      }
+                                    },
+                                    {
+                                      "id": "nodes/VP/${index}/domains",
+                                      "title": {
+                                        "text": "所有域信息"
+                                      },
+                                      "edit": true,
+                                      "value": [
+                                        ""
+                                      ],
+                                      "defaultValue": [
+                                        ""
+                                      ],
+                                      "inputType": "inputs",
+                                      "validate": {
+                                        "@type": "type.googleapis.com/ui.ValidateInputs",
+                                        "require": true,
+                                        "placeHolder": "请输入",
+                                        "maxCount": "4",
+                                        "minCount": "1"
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ],
+                      "inputType": "button"
+                    }
+                  ]
+                }
+              ],
+              "targetInputId": "chain/nodeCount/VP/Input"
+            }
+          ],
+          "inputType": "numberInput",
+          "validate": {
+            "@type": "type.googleapis.com/ui.ValidateNumber",
+            "validateDes": "请输入1-4个 VP 数量",
+            "require": true,
+            "step": "1",
+            "max": "4",
+            "min": "1"
+          }
+        }
+      ]
+    },
+    {
+      "id": "nodes/Input",
+      "title": {
+        "text": "部署配置"
+      },
+      "fold": false,
+      "showType": "tableMerge",
+      "subInputs": [
+        {
+          "id": "chain/nodeCount/VP/Input",
+          "fold": false,
+          "showType": "table"
+        }
+      ]
+    }
+  ]
+}

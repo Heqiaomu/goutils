@@ -1,0 +1,1823 @@
+{
+  "id": "chain/Input",
+  "title": {
+    "text": "联盟配置"
+  },
+  "fold": false,
+  "showType": "list",
+  "subInputs": [
+    {
+      "id": "chain/base/Input",
+      "fold": false,
+      "showType": "list",
+      "subInputs": [
+        {
+          "id": "chain/self/Input",
+          "fold": false,
+          "showType": "list",
+          "fields": [
+            {
+              "id": "chain/name",
+              "title": {
+                "text": "联盟名称"
+              },
+              "edit": true,
+              "value": [
+                ""
+              ],
+              "defaultValue": [
+                ""
+              ],
+              "inputType": "input",
+              "validate": {
+                "@type": "type.googleapis.com/ui.ValidateInput",
+                "validateDes": "请输入联盟链名称，长度为2-20个字符，由英文字母或数字中的至少一种组成",
+                "require": true,
+                "regex": "^[a-zA-Z0-9]{2,20}$"
+              }
+            },
+            {
+              "id": "chain/consensus",
+              "title": {
+                "text": "fabric共识算法"
+              },
+              "edit": true,
+              "value": [
+                ""
+              ],
+              "defaultValue": [
+                "solo"
+              ],
+              "inputReacts": [
+                {
+                  "triggerRegex": "solo",
+                  "reactType": "showInput",
+                  "inputs": [
+                    {
+                      "id": "chain/consensus/solo/nodes/Input",
+                      "fold": false,
+                      "showType": "list",
+                      "fields": [
+                        {
+                          "id": "chain/nodeCount/orderer",
+                          "title": {
+                            "text": "fabric orderer 数量"
+                          },
+                          "edit": true,
+                          "value": [
+                            ""
+                          ],
+                          "defaultValue": [
+                            "1"
+                          ],
+                          "inputReacts": [
+                            {
+                              "triggerRegex": "\\d+",
+                              "reactType": "showInputsByNumber",
+                              "inputs": [
+                                {
+                                  "id": "chain/nodeCount/orderer/${index}/Input",
+                                  "fold": false,
+                                  "showType": "tableRow",
+                                  "fields": [
+                                    {
+                                      "id": "nodes/orderer/${index}/name",
+                                      "title": {
+                                        "text": "节点名"
+                                      },
+                                      "edit": false,
+                                      "value": [
+                                        ""
+                                      ],
+                                      "defaultValue": [
+                                        "orderer${index}"
+                                      ],
+                                      "inputType": "input"
+                                    },
+                                    {
+                                      "id": "nodes/orderer/${index}/type",
+                                      "title": {
+                                        "text": "节点类型"
+                                      },
+                                      "edit": false,
+                                      "value": [
+                                        ""
+                                      ],
+                                      "defaultValue": [
+                                        "orderer节点"
+                                      ],
+                                      "inputType": "input"
+                                    },
+                                    {
+                                      "id": "nodes/orderer/${index}/Button",
+                                      "title": {
+                                        "text": "配置"
+                                      },
+                                      "edit": true,
+                                      "value": [
+                                        ""
+                                      ],
+                                      "defaultValue": [
+                                        ""
+                                      ],
+                                      "inputReacts": [
+                                        {
+                                          "triggerRegex": ".*",
+                                          "reactType": "showInput",
+                                          "inputs": [
+                                            {
+                                              "id": "nodes/orderer/${index}/advance/depend/Input",
+                                              "fold": false,
+                                              "showType": "list",
+                                              "subInputs": [
+                                                {
+                                                  "id": "nodes/orderer/${index}/advance/depend/hosts/Input",
+                                                  "title": {
+                                                    "text": "主机配置"
+                                                  },
+                                                  "fold": false,
+                                                  "showType": "list",
+                                                  "fields": [
+                                                    {
+                                                      "id": "nodes/orderer/${index}/advance/hosts/mode",
+                                                      "title": {
+                                                        "text": "配置模式"
+                                                      },
+                                                      "edit": true,
+                                                      "value": [
+                                                        ""
+                                                      ],
+                                                      "defaultValue": [
+                                                        "DepositHost"
+                                                      ],
+                                                      "inputReacts": [
+                                                        {
+                                                          "triggerRegex": "DepositHost",
+                                                          "reactType": "showInput",
+                                                          "urlReact": {
+                                                            "method": "get",
+                                                            "url": "/resources/drivers/functions/deposit-host"
+                                                          }
+                                                        },
+                                                        {
+                                                          "triggerRegex": "ExistedHost",
+                                                          "reactType": "showInput",
+                                                          "urlReact": {
+                                                            "method": "get",
+                                                            "url": "/resources/hosts/functions/id-list"
+                                                          }
+                                                        },
+                                                        {
+                                                          "triggerRegex": "CreateHost",
+                                                          "reactType": "showInput",
+                                                          "urlReact": {
+                                                            "method": "get",
+                                                            "url": "/resources/drivers/functions/create-host"
+                                                          }
+                                                        }
+                                                      ],
+                                                      "inputType": "radioButton",
+                                                      "validate": {
+                                                        "@type": "type.googleapis.com/ui.ValidateSelect",
+                                                        "validateDes": "请选择1个主机的配置模式",
+                                                        "require": true,
+                                                        "options": [
+                                                          {
+                                                            "id": "DepositHost",
+                                                            "text": "托管主机"
+                                                          },
+                                                          {
+                                                            "id": "ExistedHost",
+                                                            "text": "已有主机"
+                                                          },
+                                                          {
+                                                            "id": "CreateHost"
+                                                          },
+                                                          {
+                                                            "text": "创建主机"
+                                                          }
+                                                        ],
+                                                        "maxCount": "1",
+                                                        "minCount": "1"
+                                                      }
+                                                    }
+                                                  ]
+                                                },
+                                                {
+                                                  "id": "nodes/orderer/${index}/advance/Input",
+                                                  "title": {
+                                                    "text": "node高级配置"
+                                                  },
+                                                  "fold": false,
+                                                  "showType": "list"
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ],
+                                      "inputType": "button"
+                                    }
+                                  ]
+                                }
+                              ],
+                              "targetInputId": "nodes/orderer/${index}/Input"
+                            }
+                          ],
+                          "inputType": "numberInput",
+                          "validate": {
+                            "@type": "type.googleapis.com/ui.ValidateNumber",
+                            "validateDes": "请输入1-3个 orderer 数量",
+                            "require": true,
+                            "step": "1",
+                            "max": "3",
+                            "min": "1"
+                          }
+                        },
+                        {
+                          "id": "chain/nodeCount/peer",
+                          "title": {
+                            "text": "fabric peer 节点数量"
+                          },
+                          "edit": true,
+                          "value": [
+                            ""
+                          ],
+                          "defaultValue": [
+                            "1"
+                          ],
+                          "inputReacts": [
+                            {
+                              "triggerRegex": "\\d+",
+                              "reactType": "showInputsByNumber",
+                              "inputs": [
+                                {
+                                  "id": "chain/nodeCount/peer/${index}/Input",
+                                  "fold": false,
+                                  "showType": "tableRow",
+                                  "fields": [
+                                    {
+                                      "id": "nodes/peer/${index}/name",
+                                      "title": {
+                                        "text": "节点名"
+                                      },
+                                      "edit": false,
+                                      "value": [
+                                        ""
+                                      ],
+                                      "defaultValue": [
+                                        "peer${index}"
+                                      ],
+                                      "inputType": "input"
+                                    },
+                                    {
+                                      "id": "nodes/peer/${index}/type",
+                                      "title": {
+                                        "text": "节点类型"
+                                      },
+                                      "edit": false,
+                                      "value": [
+                                        ""
+                                      ],
+                                      "defaultValue": [
+                                        "peer节点"
+                                      ],
+                                      "inputType": "input"
+                                    },
+                                    {
+                                      "id": "nodes/peer/${index}/Button",
+                                      "title": {
+                                        "text": "配置"
+                                      },
+                                      "edit": true,
+                                      "value": [
+                                        ""
+                                      ],
+                                      "defaultValue": [
+                                        ""
+                                      ],
+                                      "inputReacts": [
+                                        {
+                                          "triggerRegex": ".*",
+                                          "reactType": "showInput",
+                                          "inputs": [
+                                            {
+                                              "id": "nodes/peer/${index}/advance/depend/Input",
+                                              "fold": false,
+                                              "showType": "list",
+                                              "subInputs": [
+                                                {
+                                                  "id": "nodes/peer/${index}/advance/depend/hosts/Input",
+                                                  "title": {
+                                                    "text": "主机配置"
+                                                  },
+                                                  "fold": false,
+                                                  "showType": "list",
+                                                  "fields": [
+                                                    {
+                                                      "id": "nodes/peer/${index}/advance/hosts/mode",
+                                                      "title": {
+                                                        "text": "配置模式"
+                                                      },
+                                                      "edit": true,
+                                                      "value": [
+                                                        ""
+                                                      ],
+                                                      "defaultValue": [
+                                                        "DepositHost"
+                                                      ],
+                                                      "inputReacts": [
+                                                        {
+                                                          "triggerRegex": "DepositHost",
+                                                          "reactType": "showInput",
+                                                          "urlReact": {
+                                                            "method": "get",
+                                                            "url": "/resources/drivers/functions/deposit-host"
+                                                          }
+                                                        },
+                                                        {
+                                                          "triggerRegex": "ExistedHost",
+                                                          "reactType": "showInput",
+                                                          "urlReact": {
+                                                            "method": "get",
+                                                            "url": "/resources/hosts/functions/id-list"
+                                                          }
+                                                        },
+                                                        {
+                                                          "triggerRegex": "CreateHost",
+                                                          "reactType": "showInput",
+                                                          "urlReact": {
+                                                            "method": "get",
+                                                            "url": "/resources/drivers/functions/create-host"
+                                                          }
+                                                        }
+                                                      ],
+                                                      "inputType": "radioButton",
+                                                      "validate": {
+                                                        "@type": "type.googleapis.com/ui.ValidateSelect",
+                                                        "validateDes": "请选择1个主机的配置模式",
+                                                        "require": true,
+                                                        "options": [
+                                                          {
+                                                            "id": "DepositHost",
+                                                            "text": "托管主机"
+                                                          },
+                                                          {
+                                                            "id": "ExistedHost",
+                                                            "text": "已有主机"
+                                                          },
+                                                          {
+                                                            "id": "CreateHost"
+                                                          },
+                                                          {
+                                                            "text": "创建主机"
+                                                          }
+                                                        ],
+                                                        "maxCount": "1",
+                                                        "minCount": "1"
+                                                      }
+                                                    }
+                                                  ]
+                                                },
+                                                {
+                                                  "id": "nodes/peer/${index}/advance/Input",
+                                                  "title": {
+                                                    "text": "node高级配置"
+                                                  },
+                                                  "fold": false,
+                                                  "showType": "list",
+                                                  "fields": [
+                                                    {
+                                                      "id": "node/orgName",
+                                                      "title": {
+                                                        "text": "节点所属组织"
+                                                      },
+                                                      "edit": true,
+                                                      "value": [
+                                                        ""
+                                                      ],
+                                                      "defaultValue": [
+                                                        ""
+                                                      ],
+                                                      "inputType": "input",
+                                                      "validate": {
+                                                        "@type": "type.googleapis.com/ui.ValidateInput",
+                                                        "validateDes": "请输入节点所属组织，长度为2-20个字符，由英文字母或数字中的至少一种组成",
+                                                        "require": true,
+                                                        "regex": "^[a-zA-Z0-9]{2,20}$"
+                                                      }
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ],
+                                      "inputType": "button"
+                                    }
+                                  ]
+                                }
+                              ],
+                              "targetInputId": "nodes/peer/${index}/Input"
+                            }
+                          ],
+                          "inputType": "numberInput",
+                          "validate": {
+                            "@type": "type.googleapis.com/ui.ValidateNumber",
+                            "validateDes": "请输入1-6个 peer 节点数量",
+                            "require": true,
+                            "step": "1",
+                            "max": "6",
+                            "min": "1"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "triggerRegex": "solo",
+                  "reactType": "showInput",
+                  "inputs": [
+                    {
+                      "id": "nodes/consensus/solo/Input",
+                      "fold": false,
+                      "showType": "tableMerge",
+                      "subInputs": [
+                        {
+                          "id": "nodes/orderer/${index}/Input",
+                          "fold": false,
+                          "showType": "table"
+                        },
+                        {
+                          "id": "nodes/peer/${index}/Input",
+                          "fold": false,
+                          "showType": "table"
+                        }
+                      ]
+                    }
+                  ],
+                  "targetInputId": "nodes/Input"
+                },
+                {
+                  "triggerRegex": "raft",
+                  "reactType": "showInput",
+                  "inputs": [
+                    {
+                      "id": "chain/consensus/raft/nodes/Input",
+                      "fold": false,
+                      "showType": "list",
+                      "fields": [
+                        {
+                          "id": "chain/nodeCount/orderer",
+                          "title": {
+                            "text": "fabric orderer 数量"
+                          },
+                          "edit": true,
+                          "value": [
+                            ""
+                          ],
+                          "defaultValue": [
+                            "1"
+                          ],
+                          "inputReacts": [
+                            {
+                              "triggerRegex": "\\d+",
+                              "reactType": "showInputsByNumber",
+                              "inputs": [
+                                {
+                                  "id": "chain/nodeCount/orderer/${index}/Input",
+                                  "fold": false,
+                                  "showType": "tableRow",
+                                  "fields": [
+                                    {
+                                      "id": "nodes/orderer/${index}/name",
+                                      "title": {
+                                        "text": "节点名"
+                                      },
+                                      "edit": false,
+                                      "value": [
+                                        ""
+                                      ],
+                                      "defaultValue": [
+                                        "orderer${index}"
+                                      ],
+                                      "inputType": "input"
+                                    },
+                                    {
+                                      "id": "nodes/orderer/${index}/type",
+                                      "title": {
+                                        "text": "节点类型"
+                                      },
+                                      "edit": false,
+                                      "value": [
+                                        ""
+                                      ],
+                                      "defaultValue": [
+                                        "orderer节点"
+                                      ],
+                                      "inputType": "input"
+                                    },
+                                    {
+                                      "id": "nodes/orderer/${index}/Button",
+                                      "title": {
+                                        "text": "配置"
+                                      },
+                                      "edit": true,
+                                      "value": [
+                                        ""
+                                      ],
+                                      "defaultValue": [
+                                        ""
+                                      ],
+                                      "inputReacts": [
+                                        {
+                                          "triggerRegex": ".*",
+                                          "reactType": "showInput",
+                                          "inputs": [
+                                            {
+                                              "id": "nodes/orderer/${index}/advance/depend/Input",
+                                              "fold": false,
+                                              "showType": "list",
+                                              "subInputs": [
+                                                {
+                                                  "id": "nodes/orderer/${index}/advance/depend/hosts/Input",
+                                                  "title": {
+                                                    "text": "主机配置"
+                                                  },
+                                                  "fold": false,
+                                                  "showType": "list",
+                                                  "fields": [
+                                                    {
+                                                      "id": "nodes/orderer/${index}/advance/hosts/mode",
+                                                      "title": {
+                                                        "text": "配置模式"
+                                                      },
+                                                      "edit": true,
+                                                      "value": [
+                                                        ""
+                                                      ],
+                                                      "defaultValue": [
+                                                        "DepositHost"
+                                                      ],
+                                                      "inputReacts": [
+                                                        {
+                                                          "triggerRegex": "DepositHost",
+                                                          "reactType": "showInput",
+                                                          "urlReact": {
+                                                            "method": "get",
+                                                            "url": "/resources/drivers/functions/deposit-host"
+                                                          }
+                                                        },
+                                                        {
+                                                          "triggerRegex": "ExistedHost",
+                                                          "reactType": "showInput",
+                                                          "urlReact": {
+                                                            "method": "get",
+                                                            "url": "/resources/hosts/functions/id-list"
+                                                          }
+                                                        },
+                                                        {
+                                                          "triggerRegex": "CreateHost",
+                                                          "reactType": "showInput",
+                                                          "urlReact": {
+                                                            "method": "get",
+                                                            "url": "/resources/drivers/functions/create-host"
+                                                          }
+                                                        }
+                                                      ],
+                                                      "inputType": "radioButton",
+                                                      "validate": {
+                                                        "@type": "type.googleapis.com/ui.ValidateSelect",
+                                                        "validateDes": "请选择1个主机的配置模式",
+                                                        "require": true,
+                                                        "options": [
+                                                          {
+                                                            "id": "DepositHost",
+                                                            "text": "托管主机"
+                                                          },
+                                                          {
+                                                            "id": "ExistedHost",
+                                                            "text": "已有主机"
+                                                          },
+                                                          {
+                                                            "id": "CreateHost"
+                                                          },
+                                                          {
+                                                            "text": "创建主机"
+                                                          }
+                                                        ],
+                                                        "maxCount": "1",
+                                                        "minCount": "1"
+                                                      }
+                                                    }
+                                                  ]
+                                                },
+                                                {
+                                                  "id": "nodes/orderer/${index}/advance/Input",
+                                                  "title": {
+                                                    "text": "node高级配置"
+                                                  },
+                                                  "fold": false,
+                                                  "showType": "list"
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ],
+                                      "inputType": "button"
+                                    }
+                                  ]
+                                }
+                              ],
+                              "targetInputId": "nodes/orderer/${index}/Input"
+                            }
+                          ],
+                          "inputType": "numberInput",
+                          "validate": {
+                            "@type": "type.googleapis.com/ui.ValidateNumber",
+                            "validateDes": "请输入1-3个 orderer 数量",
+                            "require": true,
+                            "step": "1",
+                            "max": "3",
+                            "min": "1"
+                          }
+                        },
+                        {
+                          "id": "chain/nodeCount/peer",
+                          "title": {
+                            "text": "fabric peer 节点数量"
+                          },
+                          "edit": true,
+                          "value": [
+                            ""
+                          ],
+                          "defaultValue": [
+                            "1"
+                          ],
+                          "inputReacts": [
+                            {
+                              "triggerRegex": "\\d+",
+                              "reactType": "showInputsByNumber",
+                              "inputs": [
+                                {
+                                  "id": "chain/nodeCount/peer/${index}/Input",
+                                  "fold": false,
+                                  "showType": "tableRow",
+                                  "fields": [
+                                    {
+                                      "id": "nodes/peer/${index}/name",
+                                      "title": {
+                                        "text": "节点名"
+                                      },
+                                      "edit": false,
+                                      "value": [
+                                        ""
+                                      ],
+                                      "defaultValue": [
+                                        "peer${index}"
+                                      ],
+                                      "inputType": "input"
+                                    },
+                                    {
+                                      "id": "nodes/peer/${index}/type",
+                                      "title": {
+                                        "text": "节点类型"
+                                      },
+                                      "edit": false,
+                                      "value": [
+                                        ""
+                                      ],
+                                      "defaultValue": [
+                                        "peer节点"
+                                      ],
+                                      "inputType": "input"
+                                    },
+                                    {
+                                      "id": "nodes/peer/${index}/Button",
+                                      "title": {
+                                        "text": "配置"
+                                      },
+                                      "edit": true,
+                                      "value": [
+                                        ""
+                                      ],
+                                      "defaultValue": [
+                                        ""
+                                      ],
+                                      "inputReacts": [
+                                        {
+                                          "triggerRegex": ".*",
+                                          "reactType": "showInput",
+                                          "inputs": [
+                                            {
+                                              "id": "nodes/peer/${index}/advance/depend/Input",
+                                              "fold": false,
+                                              "showType": "list",
+                                              "subInputs": [
+                                                {
+                                                  "id": "nodes/peer/${index}/advance/depend/hosts/Input",
+                                                  "title": {
+                                                    "text": "主机配置"
+                                                  },
+                                                  "fold": false,
+                                                  "showType": "list",
+                                                  "fields": [
+                                                    {
+                                                      "id": "nodes/peer/${index}/advance/hosts/mode",
+                                                      "title": {
+                                                        "text": "配置模式"
+                                                      },
+                                                      "edit": true,
+                                                      "value": [
+                                                        ""
+                                                      ],
+                                                      "defaultValue": [
+                                                        "DepositHost"
+                                                      ],
+                                                      "inputReacts": [
+                                                        {
+                                                          "triggerRegex": "DepositHost",
+                                                          "reactType": "showInput",
+                                                          "urlReact": {
+                                                            "method": "get",
+                                                            "url": "/resources/drivers/functions/deposit-host"
+                                                          }
+                                                        },
+                                                        {
+                                                          "triggerRegex": "ExistedHost",
+                                                          "reactType": "showInput",
+                                                          "urlReact": {
+                                                            "method": "get",
+                                                            "url": "/resources/hosts/functions/id-list"
+                                                          }
+                                                        },
+                                                        {
+                                                          "triggerRegex": "CreateHost",
+                                                          "reactType": "showInput",
+                                                          "urlReact": {
+                                                            "method": "get",
+                                                            "url": "/resources/drivers/functions/create-host"
+                                                          }
+                                                        }
+                                                      ],
+                                                      "inputType": "radioButton",
+                                                      "validate": {
+                                                        "@type": "type.googleapis.com/ui.ValidateSelect",
+                                                        "validateDes": "请选择1个主机的配置模式",
+                                                        "require": true,
+                                                        "options": [
+                                                          {
+                                                            "id": "DepositHost",
+                                                            "text": "托管主机"
+                                                          },
+                                                          {
+                                                            "id": "ExistedHost",
+                                                            "text": "已有主机"
+                                                          },
+                                                          {
+                                                            "id": "CreateHost"
+                                                          },
+                                                          {
+                                                            "text": "创建主机"
+                                                          }
+                                                        ],
+                                                        "maxCount": "1",
+                                                        "minCount": "1"
+                                                      }
+                                                    }
+                                                  ]
+                                                },
+                                                {
+                                                  "id": "nodes/peer/${index}/advance/Input",
+                                                  "title": {
+                                                    "text": "node高级配置"
+                                                  },
+                                                  "fold": false,
+                                                  "showType": "list",
+                                                  "fields": [
+                                                    {
+                                                      "id": "node/orgName",
+                                                      "title": {
+                                                        "text": "节点所属组织"
+                                                      },
+                                                      "edit": true,
+                                                      "value": [
+                                                        ""
+                                                      ],
+                                                      "defaultValue": [
+                                                        ""
+                                                      ],
+                                                      "inputType": "input",
+                                                      "validate": {
+                                                        "@type": "type.googleapis.com/ui.ValidateInput",
+                                                        "validateDes": "请输入节点所属组织，长度为2-20个字符，由英文字母或数字中的至少一种组成",
+                                                        "require": true,
+                                                        "regex": "^[a-zA-Z0-9]{2,20}$"
+                                                      }
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ],
+                                      "inputType": "button"
+                                    }
+                                  ]
+                                }
+                              ],
+                              "targetInputId": "nodes/peer/${index}/Input"
+                            }
+                          ],
+                          "inputType": "numberInput",
+                          "validate": {
+                            "@type": "type.googleapis.com/ui.ValidateNumber",
+                            "validateDes": "请输入1-6个 peer 节点数量",
+                            "require": true,
+                            "step": "1",
+                            "max": "6",
+                            "min": "1"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "triggerRegex": "raft",
+                  "reactType": "showInput",
+                  "inputs": [
+                    {
+                      "id": "nodes/consensus/raft/Input",
+                      "fold": false,
+                      "showType": "tableMerge",
+                      "subInputs": [
+                        {
+                          "id": "nodes/orderer/${index}/Input",
+                          "fold": false,
+                          "showType": "table"
+                        },
+                        {
+                          "id": "nodes/peer/${index}/Input",
+                          "fold": false,
+                          "showType": "table"
+                        }
+                      ]
+                    }
+                  ],
+                  "targetInputId": "nodes/Input"
+                },
+                {
+                  "triggerRegex": "kafka",
+                  "reactType": "showInput",
+                  "inputs": [
+                    {
+                      "id": "chain/consensus/kafka/nodes/Input",
+                      "fold": false,
+                      "showType": "list",
+                      "fields": [
+                        {
+                          "id": "chain/nodeCount/orderer",
+                          "title": {
+                            "text": "fabric orderer 数量"
+                          },
+                          "edit": true,
+                          "value": [
+                            ""
+                          ],
+                          "defaultValue": [
+                            "1"
+                          ],
+                          "inputReacts": [
+                            {
+                              "triggerRegex": "\\d+",
+                              "reactType": "showInputsByNumber",
+                              "inputs": [
+                                {
+                                  "id": "chain/nodeCount/orderer/${index}/Input",
+                                  "fold": false,
+                                  "showType": "tableRow",
+                                  "fields": [
+                                    {
+                                      "id": "nodes/orderer/${index}/name",
+                                      "title": {
+                                        "text": "节点名"
+                                      },
+                                      "edit": false,
+                                      "value": [
+                                        ""
+                                      ],
+                                      "defaultValue": [
+                                        "orderer${index}"
+                                      ],
+                                      "inputType": "input"
+                                    },
+                                    {
+                                      "id": "nodes/orderer/${index}/type",
+                                      "title": {
+                                        "text": "节点类型"
+                                      },
+                                      "edit": false,
+                                      "value": [
+                                        ""
+                                      ],
+                                      "defaultValue": [
+                                        "orderer节点"
+                                      ],
+                                      "inputType": "input"
+                                    },
+                                    {
+                                      "id": "nodes/orderer/${index}/Button",
+                                      "title": {
+                                        "text": "配置"
+                                      },
+                                      "edit": true,
+                                      "value": [
+                                        ""
+                                      ],
+                                      "defaultValue": [
+                                        ""
+                                      ],
+                                      "inputReacts": [
+                                        {
+                                          "triggerRegex": ".*",
+                                          "reactType": "showInput",
+                                          "inputs": [
+                                            {
+                                              "id": "nodes/orderer/${index}/advance/depend/Input",
+                                              "fold": false,
+                                              "showType": "list",
+                                              "subInputs": [
+                                                {
+                                                  "id": "nodes/orderer/${index}/advance/depend/hosts/Input",
+                                                  "title": {
+                                                    "text": "主机配置"
+                                                  },
+                                                  "fold": false,
+                                                  "showType": "list",
+                                                  "fields": [
+                                                    {
+                                                      "id": "nodes/orderer/${index}/advance/hosts/mode",
+                                                      "title": {
+                                                        "text": "配置模式"
+                                                      },
+                                                      "edit": true,
+                                                      "value": [
+                                                        ""
+                                                      ],
+                                                      "defaultValue": [
+                                                        "DepositHost"
+                                                      ],
+                                                      "inputReacts": [
+                                                        {
+                                                          "triggerRegex": "DepositHost",
+                                                          "reactType": "showInput",
+                                                          "urlReact": {
+                                                            "method": "get",
+                                                            "url": "/resources/drivers/functions/deposit-host"
+                                                          }
+                                                        },
+                                                        {
+                                                          "triggerRegex": "ExistedHost",
+                                                          "reactType": "showInput",
+                                                          "urlReact": {
+                                                            "method": "get",
+                                                            "url": "/resources/hosts/functions/id-list"
+                                                          }
+                                                        },
+                                                        {
+                                                          "triggerRegex": "CreateHost",
+                                                          "reactType": "showInput",
+                                                          "urlReact": {
+                                                            "method": "get",
+                                                            "url": "/resources/drivers/functions/create-host"
+                                                          }
+                                                        }
+                                                      ],
+                                                      "inputType": "radioButton",
+                                                      "validate": {
+                                                        "@type": "type.googleapis.com/ui.ValidateSelect",
+                                                        "validateDes": "请选择1个主机的配置模式",
+                                                        "require": true,
+                                                        "options": [
+                                                          {
+                                                            "id": "DepositHost",
+                                                            "text": "托管主机"
+                                                          },
+                                                          {
+                                                            "id": "ExistedHost",
+                                                            "text": "已有主机"
+                                                          },
+                                                          {
+                                                            "id": "CreateHost"
+                                                          },
+                                                          {
+                                                            "text": "创建主机"
+                                                          }
+                                                        ],
+                                                        "maxCount": "1",
+                                                        "minCount": "1"
+                                                      }
+                                                    }
+                                                  ]
+                                                },
+                                                {
+                                                  "id": "nodes/orderer/${index}/advance/Input",
+                                                  "title": {
+                                                    "text": "node高级配置"
+                                                  },
+                                                  "fold": false,
+                                                  "showType": "list"
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ],
+                                      "inputType": "button"
+                                    }
+                                  ]
+                                }
+                              ],
+                              "targetInputId": "nodes/orderer/${index}/Input"
+                            }
+                          ],
+                          "inputType": "numberInput",
+                          "validate": {
+                            "@type": "type.googleapis.com/ui.ValidateNumber",
+                            "validateDes": "请输入1-3个 orderer 数量",
+                            "require": true,
+                            "step": "1",
+                            "max": "3",
+                            "min": "1"
+                          }
+                        },
+                        {
+                          "id": "chain/nodeCount/peer",
+                          "title": {
+                            "text": "fabric peer 节点数量"
+                          },
+                          "edit": true,
+                          "value": [
+                            ""
+                          ],
+                          "defaultValue": [
+                            "1"
+                          ],
+                          "inputReacts": [
+                            {
+                              "triggerRegex": "\\d+",
+                              "reactType": "showInputsByNumber",
+                              "inputs": [
+                                {
+                                  "id": "chain/nodeCount/peer/${index}/Input",
+                                  "fold": false,
+                                  "showType": "tableRow",
+                                  "fields": [
+                                    {
+                                      "id": "nodes/peer/${index}/name",
+                                      "title": {
+                                        "text": "节点名"
+                                      },
+                                      "edit": false,
+                                      "value": [
+                                        ""
+                                      ],
+                                      "defaultValue": [
+                                        "peer${index}"
+                                      ],
+                                      "inputType": "input"
+                                    },
+                                    {
+                                      "id": "nodes/peer/${index}/type",
+                                      "title": {
+                                        "text": "节点类型"
+                                      },
+                                      "edit": false,
+                                      "value": [
+                                        ""
+                                      ],
+                                      "defaultValue": [
+                                        "peer节点"
+                                      ],
+                                      "inputType": "input"
+                                    },
+                                    {
+                                      "id": "nodes/peer/${index}/Button",
+                                      "title": {
+                                        "text": "配置"
+                                      },
+                                      "edit": true,
+                                      "value": [
+                                        ""
+                                      ],
+                                      "defaultValue": [
+                                        ""
+                                      ],
+                                      "inputReacts": [
+                                        {
+                                          "triggerRegex": ".*",
+                                          "reactType": "showInput",
+                                          "inputs": [
+                                            {
+                                              "id": "nodes/peer/${index}/advance/depend/Input",
+                                              "fold": false,
+                                              "showType": "list",
+                                              "subInputs": [
+                                                {
+                                                  "id": "nodes/peer/${index}/advance/depend/hosts/Input",
+                                                  "title": {
+                                                    "text": "主机配置"
+                                                  },
+                                                  "fold": false,
+                                                  "showType": "list",
+                                                  "fields": [
+                                                    {
+                                                      "id": "nodes/peer/${index}/advance/hosts/mode",
+                                                      "title": {
+                                                        "text": "配置模式"
+                                                      },
+                                                      "edit": true,
+                                                      "value": [
+                                                        ""
+                                                      ],
+                                                      "defaultValue": [
+                                                        "DepositHost"
+                                                      ],
+                                                      "inputReacts": [
+                                                        {
+                                                          "triggerRegex": "DepositHost",
+                                                          "reactType": "showInput",
+                                                          "urlReact": {
+                                                            "method": "get",
+                                                            "url": "/resources/drivers/functions/deposit-host"
+                                                          }
+                                                        },
+                                                        {
+                                                          "triggerRegex": "ExistedHost",
+                                                          "reactType": "showInput",
+                                                          "urlReact": {
+                                                            "method": "get",
+                                                            "url": "/resources/hosts/functions/id-list"
+                                                          }
+                                                        },
+                                                        {
+                                                          "triggerRegex": "CreateHost",
+                                                          "reactType": "showInput",
+                                                          "urlReact": {
+                                                            "method": "get",
+                                                            "url": "/resources/drivers/functions/create-host"
+                                                          }
+                                                        }
+                                                      ],
+                                                      "inputType": "radioButton",
+                                                      "validate": {
+                                                        "@type": "type.googleapis.com/ui.ValidateSelect",
+                                                        "validateDes": "请选择1个主机的配置模式",
+                                                        "require": true,
+                                                        "options": [
+                                                          {
+                                                            "id": "DepositHost",
+                                                            "text": "托管主机"
+                                                          },
+                                                          {
+                                                            "id": "ExistedHost",
+                                                            "text": "已有主机"
+                                                          },
+                                                          {
+                                                            "id": "CreateHost"
+                                                          },
+                                                          {
+                                                            "text": "创建主机"
+                                                          }
+                                                        ],
+                                                        "maxCount": "1",
+                                                        "minCount": "1"
+                                                      }
+                                                    }
+                                                  ]
+                                                },
+                                                {
+                                                  "id": "nodes/peer/${index}/advance/Input",
+                                                  "title": {
+                                                    "text": "node高级配置"
+                                                  },
+                                                  "fold": false,
+                                                  "showType": "list",
+                                                  "fields": [
+                                                    {
+                                                      "id": "node/orgName",
+                                                      "title": {
+                                                        "text": "节点所属组织"
+                                                      },
+                                                      "edit": true,
+                                                      "value": [
+                                                        ""
+                                                      ],
+                                                      "defaultValue": [
+                                                        ""
+                                                      ],
+                                                      "inputType": "input",
+                                                      "validate": {
+                                                        "@type": "type.googleapis.com/ui.ValidateInput",
+                                                        "validateDes": "请输入节点所属组织，长度为2-20个字符，由英文字母或数字中的至少一种组成",
+                                                        "require": true,
+                                                        "regex": "^[a-zA-Z0-9]{2,20}$"
+                                                      }
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ],
+                                      "inputType": "button"
+                                    }
+                                  ]
+                                }
+                              ],
+                              "targetInputId": "nodes/peer/${index}/Input"
+                            }
+                          ],
+                          "inputType": "numberInput",
+                          "validate": {
+                            "@type": "type.googleapis.com/ui.ValidateNumber",
+                            "validateDes": "请输入1-6个 peer 节点数量",
+                            "require": true,
+                            "step": "1",
+                            "max": "6",
+                            "min": "1"
+                          }
+                        },
+                        {
+                          "id": "chain/nodeCount/kafka",
+                          "title": {
+                            "text": "fabric kafka 节点数量"
+                          },
+                          "edit": false,
+                          "value": [
+                            ""
+                          ],
+                          "defaultValue": [
+                            "4"
+                          ],
+                          "inputReacts": [
+                            {
+                              "triggerRegex": "\\d+",
+                              "reactType": "showInputsByNumber",
+                              "inputs": [
+                                {
+                                  "id": "chain/nodeCount/kafka/${index}/Input",
+                                  "fold": false,
+                                  "showType": "tableRow",
+                                  "fields": [
+                                    {
+                                      "id": "nodes/kafka/${index}/name",
+                                      "title": {
+                                        "text": "节点名"
+                                      },
+                                      "edit": false,
+                                      "value": [
+                                        ""
+                                      ],
+                                      "defaultValue": [
+                                        "kafka${index}"
+                                      ],
+                                      "inputType": "input"
+                                    },
+                                    {
+                                      "id": "nodes/kafka/${index}/type",
+                                      "title": {
+                                        "text": "节点类型"
+                                      },
+                                      "edit": false,
+                                      "value": [
+                                        ""
+                                      ],
+                                      "defaultValue": [
+                                        "kafka节点"
+                                      ],
+                                      "inputType": "input"
+                                    },
+                                    {
+                                      "id": "nodes/kafka/${index}/Button",
+                                      "title": {
+                                        "text": "配置"
+                                      },
+                                      "edit": true,
+                                      "value": [
+                                        ""
+                                      ],
+                                      "defaultValue": [
+                                        ""
+                                      ],
+                                      "inputReacts": [
+                                        {
+                                          "triggerRegex": ".*",
+                                          "reactType": "showInput",
+                                          "inputs": [
+                                            {
+                                              "id": "nodes/kafka/${index}/advance/depend/Input",
+                                              "fold": false,
+                                              "showType": "list",
+                                              "subInputs": [
+                                                {
+                                                  "id": "nodes/kafka/${index}/advance/depend/hosts/Input",
+                                                  "title": {
+                                                    "text": "主机配置"
+                                                  },
+                                                  "fold": false,
+                                                  "showType": "list",
+                                                  "fields": [
+                                                    {
+                                                      "id": "nodes/kafka/${index}/advance/hosts/mode",
+                                                      "title": {
+                                                        "text": "配置模式"
+                                                      },
+                                                      "edit": true,
+                                                      "value": [
+                                                        ""
+                                                      ],
+                                                      "defaultValue": [
+                                                        "DepositHost"
+                                                      ],
+                                                      "inputReacts": [
+                                                        {
+                                                          "triggerRegex": "DepositHost",
+                                                          "reactType": "showInput",
+                                                          "urlReact": {
+                                                            "method": "get",
+                                                            "url": "/resources/drivers/functions/deposit-host"
+                                                          }
+                                                        },
+                                                        {
+                                                          "triggerRegex": "ExistedHost",
+                                                          "reactType": "showInput",
+                                                          "urlReact": {
+                                                            "method": "get",
+                                                            "url": "/resources/hosts/functions/id-list"
+                                                          }
+                                                        },
+                                                        {
+                                                          "triggerRegex": "CreateHost",
+                                                          "reactType": "showInput",
+                                                          "urlReact": {
+                                                            "method": "get",
+                                                            "url": "/resources/drivers/functions/create-host"
+                                                          }
+                                                        }
+                                                      ],
+                                                      "inputType": "radioButton",
+                                                      "validate": {
+                                                        "@type": "type.googleapis.com/ui.ValidateSelect",
+                                                        "validateDes": "请选择1个主机的配置模式",
+                                                        "require": true,
+                                                        "options": [
+                                                          {
+                                                            "id": "DepositHost",
+                                                            "text": "托管主机"
+                                                          },
+                                                          {
+                                                            "id": "ExistedHost",
+                                                            "text": "已有主机"
+                                                          },
+                                                          {
+                                                            "id": "CreateHost"
+                                                          },
+                                                          {
+                                                            "text": "创建主机"
+                                                          }
+                                                        ],
+                                                        "maxCount": "1",
+                                                        "minCount": "1"
+                                                      }
+                                                    }
+                                                  ]
+                                                },
+                                                {
+                                                  "id": "nodes/kafka/${index}/advance/Input",
+                                                  "title": {
+                                                    "text": "node高级配置"
+                                                  },
+                                                  "fold": false,
+                                                  "showType": "list"
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ],
+                                      "inputType": "button"
+                                    }
+                                  ]
+                                }
+                              ],
+                              "targetInputId": "nodes/kafka/${index}/Input"
+                            }
+                          ],
+                          "inputType": "input"
+                        },
+                        {
+                          "id": "chain/nodeCount/zookeeper",
+                          "title": {
+                            "text": "fabric zookeeper 节点数量"
+                          },
+                          "edit": false,
+                          "value": [
+                            ""
+                          ],
+                          "defaultValue": [
+                            "3"
+                          ],
+                          "inputReacts": [
+                            {
+                              "triggerRegex": "\\d+",
+                              "reactType": "showInputsByNumber",
+                              "inputs": [
+                                {
+                                  "id": "chain/nodeCount/zookeeper/${index}/Input",
+                                  "fold": false,
+                                  "showType": "tableRow",
+                                  "fields": [
+                                    {
+                                      "id": "nodes/zookeeper/${index}/name",
+                                      "title": {
+                                        "text": "节点名"
+                                      },
+                                      "edit": false,
+                                      "value": [
+                                        ""
+                                      ],
+                                      "defaultValue": [
+                                        "zookeeper${index}"
+                                      ],
+                                      "inputType": "input"
+                                    },
+                                    {
+                                      "id": "nodes/zookeeper/${index}/type",
+                                      "title": {
+                                        "text": "节点类型"
+                                      },
+                                      "edit": false,
+                                      "value": [
+                                        ""
+                                      ],
+                                      "defaultValue": [
+                                        "zookeeper节点"
+                                      ],
+                                      "inputType": "input"
+                                    },
+                                    {
+                                      "id": "nodes/zookeeper/${index}/Button",
+                                      "title": {
+                                        "text": "配置"
+                                      },
+                                      "edit": true,
+                                      "value": [
+                                        ""
+                                      ],
+                                      "defaultValue": [
+                                        ""
+                                      ],
+                                      "inputReacts": [
+                                        {
+                                          "triggerRegex": ".*",
+                                          "reactType": "showInput",
+                                          "inputs": [
+                                            {
+                                              "id": "nodes/zookeeper/${index}/advance/depend/Input",
+                                              "fold": false,
+                                              "showType": "list",
+                                              "subInputs": [
+                                                {
+                                                  "id": "nodes/zookeeper/${index}/advance/depend/hosts/Input",
+                                                  "title": {
+                                                    "text": "主机配置"
+                                                  },
+                                                  "fold": false,
+                                                  "showType": "list",
+                                                  "fields": [
+                                                    {
+                                                      "id": "nodes/zookeeper/${index}/advance/hosts/mode",
+                                                      "title": {
+                                                        "text": "配置模式"
+                                                      },
+                                                      "edit": true,
+                                                      "value": [
+                                                        ""
+                                                      ],
+                                                      "defaultValue": [
+                                                        "DepositHost"
+                                                      ],
+                                                      "inputReacts": [
+                                                        {
+                                                          "triggerRegex": "DepositHost",
+                                                          "reactType": "showInput",
+                                                          "urlReact": {
+                                                            "method": "get",
+                                                            "url": "/resources/drivers/functions/deposit-host"
+                                                          }
+                                                        },
+                                                        {
+                                                          "triggerRegex": "ExistedHost",
+                                                          "reactType": "showInput",
+                                                          "urlReact": {
+                                                            "method": "get",
+                                                            "url": "/resources/hosts/functions/id-list"
+                                                          }
+                                                        },
+                                                        {
+                                                          "triggerRegex": "CreateHost",
+                                                          "reactType": "showInput",
+                                                          "urlReact": {
+                                                            "method": "get",
+                                                            "url": "/resources/drivers/functions/create-host"
+                                                          }
+                                                        }
+                                                      ],
+                                                      "inputType": "radioButton",
+                                                      "validate": {
+                                                        "@type": "type.googleapis.com/ui.ValidateSelect",
+                                                        "validateDes": "请选择1个主机的配置模式",
+                                                        "require": true,
+                                                        "options": [
+                                                          {
+                                                            "id": "DepositHost",
+                                                            "text": "托管主机"
+                                                          },
+                                                          {
+                                                            "id": "ExistedHost",
+                                                            "text": "已有主机"
+                                                          },
+                                                          {
+                                                            "id": "CreateHost"
+                                                          },
+                                                          {
+                                                            "text": "创建主机"
+                                                          }
+                                                        ],
+                                                        "maxCount": "1",
+                                                        "minCount": "1"
+                                                      }
+                                                    }
+                                                  ]
+                                                },
+                                                {
+                                                  "id": "nodes/zookeeper/${index}/advance/Input",
+                                                  "title": {
+                                                    "text": "node高级配置"
+                                                  },
+                                                  "fold": false,
+                                                  "showType": "list"
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ],
+                                      "inputType": "input"
+                                    }
+                                  ]
+                                }
+                              ],
+                              "targetInputId": "nodes/zookeeper/${index}/Input"
+                            }
+                          ],
+                          "inputType": "input"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "triggerRegex": "kafka",
+                  "reactType": "showInput",
+                  "inputs": [
+                    {
+                      "id": "nodes/consensus/kafka/Input",
+                      "fold": false,
+                      "showType": "tableMerge",
+                      "subInputs": [
+                        {
+                          "id": "nodes/orderer/${index}/Input",
+                          "fold": false,
+                          "showType": "table"
+                        },
+                        {
+                          "id": "nodes/peer/${index}/Input",
+                          "fold": false,
+                          "showType": "table"
+                        },
+                        {
+                          "id": "nodes/kafka/${index}/Input",
+                          "fold": false,
+                          "showType": "table"
+                        },
+                        {
+                          "id": "nodes/zookeeper/${index}/Input",
+                          "fold": false,
+                          "showType": "table"
+                        }
+                      ]
+                    }
+                  ],
+                  "targetInputId": "nodes/Input"
+                }
+              ],
+              "inputType": "select",
+              "validate": {
+                "@type": "type.googleapis.com/ui.ValidateSelect",
+                "validateDes": "请选择一种共识算法",
+                "require": true,
+                "options": [
+                  {
+                    "id": "solo",
+                    "text": "solo"
+                  },
+                  {
+                    "id": "kafka",
+                    "text": "kafka"
+                  },
+                  {
+                    "id": "raft",
+                    "text": "raft"
+                  }
+                ],
+                "maxCount": "1",
+                "minCount": "1"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chain/advance/Input",
+      "fold": false,
+      "showType": "list",
+      "fields": [
+        {
+          "id": "chain/channel",
+          "title": {
+            "text": "Fabric通道名称"
+          },
+          "edit": true,
+          "value": [
+            ""
+          ],
+          "defaultValue": [
+            "mychannel"
+          ],
+          "inputType": "input",
+          "validate": {
+            "@type": "type.googleapis.com/ui.ValidateInput",
+            "validateDes": "请输入联盟链通道名称，长度为2-20个字符，由英文字母或数字中的至少一种组成",
+            "require": true,
+            "regex": "^[a-zA-Z0-9]{2,20}$"
+          }
+        },
+        {
+          "id": "chain/tlsEnable",
+          "title": {
+            "text": "fabric是否开启tls"
+          },
+          "edit": false,
+          "value": [
+            ""
+          ],
+          "defaultValue": [
+            "true"
+          ],
+          "inputType": "input"
+        },
+        {
+          "id": "chain/implementation",
+          "title": {
+            "text": "Fabric链版本"
+          },
+          "edit": true,
+          "value": [
+            ""
+          ],
+          "defaultValue": [
+            "v1.4.1"
+          ],
+          "inputType": "select",
+          "validate": {
+            "@type": "type.googleapis.com/ui.ValidateSelect",
+            "validateDes": "请选择一个版本",
+            "require": true,
+            "options": [
+              {
+                "id": "v1.4.1",
+                "text": "v1.4.1"
+              }
+            ],
+            "maxCount": "1",
+            "minCount": "1"
+          }
+        },
+        {
+          "id": "chain/ordererBatchTimeout",
+          "title": {
+            "text": "区块打包超时时长"
+          },
+          "edit": true,
+          "value": [
+            ""
+          ],
+          "defaultValue": [
+            "2"
+          ],
+          "inputType": "numberInput",
+          "validate": {
+            "@type": "type.googleapis.com/ui.ValidateNumber",
+            "validateDes": "请输入区块打包超时时长，默认为2s",
+            "require": true,
+            "step": "1",
+            "max": "60",
+            "min": "1",
+            "mid": "30",
+            "unit": "s"
+          }
+        },
+        {
+          "id": "chain/ordererMaxMessageCount",
+          "title": {
+            "text": "每个区块最大交易数量"
+          },
+          "edit": true,
+          "value": [
+            ""
+          ],
+          "defaultValue": [
+            "500"
+          ],
+          "inputType": "numberInput",
+          "validate": {
+            "@type": "type.googleapis.com/ui.ValidateNumber",
+            "validateDes": "请输入每个区块最大交易数量，默认为500",
+            "require": true,
+            "step": "1",
+            "max": "1000",
+            "min": "100",
+            "mid": "550"
+          }
+        },
+        {
+          "id": "chain/ordererAbsoluteMaxBytes",
+          "title": {
+            "text": "区块文件绝对最大字节数"
+          },
+          "edit": true,
+          "value": [
+            ""
+          ],
+          "defaultValue": [
+            "99MB"
+          ],
+          "inputType": "input",
+          "validate": {
+            "@type": "type.googleapis.com/ui.ValidateInput",
+            "validateDes": "请输入区块文件绝对最大字节数，默认为99MB",
+            "require": true,
+            "regex": "^[0-9]+[MB]{2}$"
+          }
+        },
+        {
+          "id": "chain/ordererPreferredMaxBytes",
+          "title": {
+            "text": "区块文件首选最大字节数"
+          },
+          "edit": true,
+          "value": [
+            ""
+          ],
+          "defaultValue": [
+            "512KB"
+          ],
+          "inputType": "input",
+          "validate": {
+            "@type": "type.googleapis.com/ui.ValidateInput",
+            "validateDes": "请输入区块文件首选最大字节数，默认为512KB",
+            "require": true,
+            "regex": "^[0-9]+[KB]{2}$"
+          }
+        }
+      ]
+    },
+    {
+      "id": "nodes/Input",
+      "title": {
+        "text": "部署配置"
+      },
+      "fold": false,
+      "showType": "list"
+    }
+  ]
+}

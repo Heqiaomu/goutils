@@ -1,0 +1,16 @@
+fields:
+  - key: 'credentialID'
+    tag: 'credentials/id'
+    title:
+      text: '凭证名称'
+    type: 'select'
+    validate:
+      holder: '请选择'
+      maxCount: 1
+      minCount: 1
+    buttons: ['createCredentialButton']
+  - key: 'createCredentialButton'
+    tag: 'credentials/create/Button'
+    title:
+      text: '创建凭证'
+    type: 'button'

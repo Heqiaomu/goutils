@@ -1,0 +1,1 @@
+{"id":"chain/Input","title":{"text":"联盟配置"},"fold":false,"showType":"list","fields":[{"id":"chain/name","title":{"text":"链名"},"edit":true,"value":[""],"defaultValue":[""],"inputType":"input"}]}

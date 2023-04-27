@@ -1,0 +1,72 @@
+fieldReactions:
+  - field: 'chain/consensus'
+    reactions:
+      - regex: 'solo'
+        type: 'showInput'
+        input: 'chain/consensus/solo/nodes/Input'
+      - regex: 'solo'
+        type: 'showInput'
+        input: 'nodes/consensus/solo/Input'
+        target: 'nodes/Input'
+      - regex: 'raft'
+        type: 'showInput'
+        input: 'chain/consensus/raft/nodes/Input'
+      - regex: 'raft'
+        type: 'showInput'
+        input: 'nodes/consensus/raft/Input'
+        target: 'nodes/Input'
+      - regex: 'kafka'
+        type: 'showInput'
+        input: 'chain/consensus/kafka/nodes/Input'
+      - regex: 'kafka'
+        type: 'showInput'
+        input: 'nodes/consensus/kafka/Input'
+        target: 'nodes/Input'
+  - field: 'chain/nodeCount/orderer'
+    reactions:
+      - regex: '\d+'
+        type: 'showInputsByNumber'
+        input: 'chain/nodeCount/orderer/${index}/Input'
+        target: 'nodes/orderer/${index}/Input'
+  - field: 'chain/nodeCount/peer'
+    reactions:
+      - regex: '\d+'
+        type: 'showInputsByNumber'
+        input: 'chain/nodeCount/peer/${index}/Input'
+        target: 'nodes/peer/${index}/Input'
+  - field: 'chain/nodeCount/kafka'
+    reactions:
+      - regex: '\d+'
+        type: 'showInputsByNumber'
+        input: 'chain/nodeCount/kafka/${index}/Input'
+        target: 'nodes/kafka/${index}/Input'
+  - field: 'chain/nodeCount/zookeeper'
+    reactions:
+      - regex: '\d+'
+        type: 'showInputsByNumber'
+        input: 'chain/nodeCount/zookeeper/${index}/Input'
+        target: 'nodes/zookeeper/${index}/Input'
+
+  - field: 'nodes/peer/${index}/Button'
+    reactions:
+      - regex: '.*'
+        type: 'showInput'
+        input: 'nodes/peer/${index}/advance/Input'
+
+  - field: 'nodes/orderer/${index}/Button'
+    reactions:
+      - regex: '.*'
+        type: 'showInput'
+        input: 'nodes/orderer/${index}/advance/Input'
+
+  - field: 'nodes/kafka/${index}/Button'
+    reactions:
+      - regex: '.*'
+        type: 'showInput'
+        input: 'nodes/kafka/${index}/advance/Input'
+
+  - field: 'nodes/zookeeper/${index}/Button'
+    reactions:
+      - regex: '.*'
+        type: 'showInput'
+        input: 'nodes/zookeeper/${index}/advance/Input'

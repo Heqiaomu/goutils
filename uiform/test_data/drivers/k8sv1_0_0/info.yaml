@@ -1,0 +1,21 @@
+name:
+  id: k8s
+  text: 'kebernetes'
+version: v1_0_0
+type: host
+resources: [hosts,credentials]
+logo: ./K8S.svg
+actions:
+  - id: create-hosts
+    name:
+      id: create
+      text: '创建'
+      desc: '创建Kebernetes'
+    target: hosts
+  - id: create-credentials
+    name:
+      id: create
+      text: '创建凭证'
+      desc: '创建凭证'
+    target: credentials
+exePath: './driver.lua'

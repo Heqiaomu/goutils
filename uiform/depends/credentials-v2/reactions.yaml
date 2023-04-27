@@ -1,0 +1,8 @@
+fieldReactions:
+  - field: 'createCredentialButton'
+    reactions:
+      - regex: '.*'
+        type: 'showInput'
+        urlReact:
+          method: 'get'
+          url: '/drivers/${drivers/host/id}/actions/create-credentials'

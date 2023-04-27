@@ -1,0 +1,197 @@
+{
+  "id": "host/depend/Input",
+  "fold": false,
+  "showType": "list",
+  "subInputs": [
+    {
+      "id": "host/depend/credentials/Input",
+      "title": {
+        "text": "云凭证配置"
+      },
+      "fold": false,
+      "showType": "list",
+      "fields": [
+        {
+          "id": "host/credentials/id",
+          "title": {
+            "text": "凭证名称"
+          },
+          "edit": true,
+          "value": [
+            ""
+          ],
+          "defaultValue": [
+            ""
+          ],
+          "inputType": "select",
+          "validate": {
+            "validateDes": "请选择1个凭证名称",
+            "require": true,
+            "maxCount": "1",
+            "minCount": "1"
+          },
+          "buttons": [
+            {
+              "id": "host/credentials/create/Button",
+              "title": {
+                "text": "创建凭证"
+              },
+              "edit": true,
+              "value": [
+                ""
+              ],
+              "defaultValue": [
+                ""
+              ],
+              "inputReacts": [
+                {
+                  "triggerRegex": ".*",
+                  "reactType": "showInput",
+                  "urlReact": {
+                    "method": "get",
+                    "url": "/drivers/${drivers/host/id}/actions/create-credential"
+                  },
+                  "inputs": [
+                    {
+                      "id": "credential/Input",
+                      "title": {
+                        "text": "创建凭证"
+                      },
+                      "fold": false,
+                      "showType": "list",
+                      "fields": [
+                        {
+                          "id": "credential/kubeConfig",
+                          "title": {
+                            "text": "k8s 配置文件"
+                          },
+                          "edit": true,
+                          "value": [
+                            "apiVersion: v1\nkind: Config\nclusters:\n- name: \"hks\"\n  cluster:\n    server: \"https://172.16.30.71:8443/k8s/clusters/c-jz5vd\"\n    certificate-authority-data: \"LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUM3akNDQ\\\n      WRhZ0F3SUJBZ0lCQURBTkJna3Foa2lHOXcwQkFRc0ZBREFvTVJJd0VBWURWUVFLRXdsMGFHVXQKY\\\n      21GdVkyZ3hFakFRQmdOVkJBTVRDV05oZEhSc1pTMWpZVEFlRncweE9URXhNakV3TWpReE16TmFGd\\\n      zB5T1RFeApNVGd3TWpReE16TmFNQ2d4RWpBUUJnTlZCQW9UQ1hSb1pTMXlZVzVqYURFU01CQUdBM\\\n      VVFQXhNSlkyRjBkR3hsCkxXTmhNSUlCSWpBTkJna3Foa2lHOXcwQkFRRUZBQU9DQVE4QU1JSUJDZ\\\n      0tDQVFFQXJNVmtaNThIM2oyS0sxTlMKWWp5Q043WkJKU09KRHFwVFVzUkF4REtTVFBEd2VmVnFjV\\\n      DVNcW4xZnBnSmEzOGlzSHY4eVlpOW01THY5TGI5NApXa0cvay9hdDhEeTVaclpNVWhDQXdyT0t2c\\\n      Et3Y3IyU05xLzNqdi9BSGYzT1MzQ2FGbkVsWTBzUFlYbUkzai9CClFKbE5sdjBRWEc2dXRqVGxab\\\n      UZjdmlIaVY5RWZNZ0FhVWllVjdldHo2WnZFUlFJNEl3R3RqUGRrejdtMXdoZ0MKbXVPRElsQllCN\\\n      y9wWFd2SW9wMjVpbmVudk0reHFyYjRLRSs4M2JSMXdaajg5bmZzZGZEMVp2VEFJeFhNQW5rRQptZ\\\n      zRDT1ljV2xKOEw5Uk53VVZKWE0yVGFLdmZnUkpFQnhIbDB4dE91cmhscjNpTUp4cncxbXdRMWNmM\\\n      lpWanRqClZJVXViUUlEQVFBQm95TXdJVEFPQmdOVkhROEJBZjhFQkFNQ0FxUXdEd1lEVlIwVEFRS\\\n      C9CQVV3QXdFQi96QU4KQmdrcWhraUc5dzBCQVFzRkFBT0NBUUVBb3V0OUl5dXlRM2pRMFhDQlJoO\\\n      WYvd0hlZWx1enQ1cHlpVGxDZU9UQgpvRmpyVThyUzRtdldvZnRjM0UxSkhsdXp4bXRxaEh6cTg4Y\\\n      WxZR2Y0NE4veTFyczBFRDNYbU1RV3ZSSmJOYUJyCkh4NGI5UWxlSzM5NG1yeEZ1RjdWdE9YNVZob\\\n      jVBL2kxRm1aTzVUWDdTOTQ5SHAwZ0pOK1pUcStMb1o5MHdxbjAKeEJ4YVVnbWtsbjZCUWp2emRDN\\\n      HRaejdlNDVZRUlNeFJhbGd0emVVSHVJc0ZzTDlaRmhPbmlaVHZoRFBnN1dNNgp2NnIxMWcyNysxK\\\n      zZMbC9LZVVSM3hJR29RaXlGYjkzdWNEYmRKR2hIWGxTNzFnUERWZVB2TXZmdVlWRWNpRVM2Cjdqd\\\n      2t0YWoweGJMOXcvd3BUcmZlaGd3cVJCU1JTYlYyRG9LNDZEeFk2RUZQVkE9PQotLS0tLUVORCBDR\\\n      VJUSUZJQ0FURS0tLS0t\"\n- name: \"hks-node1\"\n  cluster:\n    server: \"https://172.16.30.71:6443\"\n    certificate-authority-data: \"LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUN3akNDQ\\\n      WFxZ0F3SUJBZ0lCQURBTkJna3Foa2lHOXcwQkFRc0ZBREFTTVJBd0RnWURWUVFERXdkcmRXSmwKT\\\n      FdOaE1CNFhEVEU1TVRFeU1UQXlOVEl5TmxvWERUSTVNVEV4T0RBeU5USXlObG93RWpFUU1BNEdBM\\\n      VVFQXhNSAphM1ZpWlMxallUQ0NBU0l3RFFZSktvWklodmNOQVFFQkJRQURnZ0VQQURDQ0FRb0NnZ\\\n      0VCQU5YSnlUSjU3emRaCnBWbHlTUGl1WFpLSnFwL0c4NGpJblhzVzlXdExMSVZ4eC93VGUzdng1W\\\n      DAzb0o1dlpTUW9LQVV2WXQ5RVVPU3cKcW5NNmFTNkxCOVFCUjBoS0hUc1FqaWFSbnNjRzlMUU1PQ\\\n      2RTOEx0V1FxWHhHZlFuTFJQU0NseXR1elBEcnQ1Tgo0MG1pMm5wbjR3RkZWSXZzcE1YbHFDN29OT\\\n      S9vbktqVjd6SXhncSt2K21jMVhMazNYaEw3VXRJZ2F2N0pFNVNsClpaMjR2MjEvMWJwc1MzNEVQM\\\n      XBLc3hBNko1WWJpZEZjbVJNZ2xTeU9CQ2VOcXI3d05iRjRXYzJGV1NWWStLZjAKdzhVbjJ6anhCK\\\n      296S29oK1hkQTh3NFo0RnV1R2ZuZllYT2RTMnpzNmc1Wm5VZnUrVkVrWWxKUlFkS1NNOXRFSApSV\\\n      HYwMkowY1lKa0NBd0VBQWFNak1DRXdEZ1lEVlIwUEFRSC9CQVFEQWdLa01BOEdBMVVkRXdFQi93U\\\n      UZNQU1CCkFmOHdEUVlKS29aSWh2Y05BUUVMQlFBRGdnRUJBTXBxcWxGMDJEOGVyMlpkK3NCa2FaZ\\\n      0t5UTBFUXFwT2piNFoKRVBhMHdhOVRpRzJjT2UxY3FRS1VlWndFRmFiQzBrQ29qcEtPZ0lMcmhha\\\n      WRwbENybGlwbkg1Smp1YmIzcEI1Two1UmNhYXVQSXNXcHlYQ3FCMVUySU1US0NTUEhrNUZqeDUwY\\\n      jB3d0ZGWEtGK21UamkvZkRtc3dPVXNCcHBrUmhpCmFoRGJlRHNnVXp5YnAvaXpBMjY2Mko3VzhGR\\\n      0d3bjNFajJ0UFlJaEVjbjd4SFVUa3kvVUs1WGVIekxvRHJaa2EKeWg2dzg0OUkyWUUxazl6WDhNV\\\n      CtpVmJPN1hOcUxJcENyNXFUK1BIQms0SnNHWG0xTDNPazhkZG81eXFuVSthSgpMVklrQjRiekw2a\\\n      jR2dHFMcDRxRDlVc0xHNUhkbzAwUGRCSXpxU3psN1RCakNNazRBQkE9Ci0tLS0tRU5EIENFUlRJR\\\n      klDQVRFLS0tLS0K\"\n\nusers:\n- name: \"hks\"\n  user:\n    token: \"kubeconfig-user-zj28s.c-jz5vd:khrxg4rjms2c79sd44mswp2ql24ddvm5jdqkwqwvk498zpjknkflhk\"\n\ncontexts:\n- name: \"hks\"\n  context:\n    user: \"hks\"\n    cluster: \"hks\"\n- name: \"hks-node1\"\n  context:\n    user: \"hks\"\n    cluster: \"hks-node1\"\n\ncurrent-context: \"hks\""
+                          ],
+                          "defaultValue": [
+                            ""
+                          ],
+                          "inputType": "input"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "inputType": "button"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "host/Input",
+      "title": {
+        "text": "创建主机"
+      },
+      "fold": false,
+      "showType": "list",
+      "fields": [
+        {
+          "id": "host/Namespace",
+          "title": {
+            "text": "命名空间"
+          },
+          "edit": true,
+          "value": [
+            "deploy-hpc"
+          ],
+          "defaultValue": [
+            ""
+          ],
+          "inputType": "input"
+        },
+        {
+          "id": "host/AutoCreatePV",
+          "title": {
+            "text": "是否自动创建PV"
+          },
+          "edit": true,
+          "value": [
+            "true"
+          ],
+          "defaultValue": [
+            ""
+          ],
+          "inputType": "input"
+        },
+        {
+          "id": "host/ApplyStorageClass",
+          "title": {
+            "text": "是否使用StorageClass"
+          },
+          "edit": true,
+          "value": [
+            "true"
+          ],
+          "defaultValue": [
+            ""
+          ],
+          "inputType": "input"
+        },
+        {
+          "id": "host/ApplyPVTemplate",
+          "title": {
+            "text": "是否使用PV模板"
+          },
+          "edit": true,
+          "value": [
+            "false"
+          ],
+          "defaultValue": [
+            ""
+          ],
+          "inputType": "input"
+        },
+        {
+          "id": "host/StorageClassName",
+          "title": {
+            "text": "提供StorageClass名称"
+          },
+          "edit": true,
+          "value": [
+            "managed-nfs-storage"
+          ],
+          "defaultValue": [
+            ""
+          ],
+          "inputType": "input"
+        },
+        {
+          "id": "host/PVTemplate",
+          "title": {
+            "text": "提供PV模板"
+          },
+          "edit": true,
+          "value": [
+            ""
+          ],
+          "defaultValue": [
+            ""
+          ],
+          "inputType": "input"
+        },
+        {
+          "id": "host/PVNameTemplate",
+          "title": {
+            "text": "提供PV名称模板"
+          },
+          "edit": true,
+          "value": [
+            "{{chainname}}-{{org-name}}-pv"
+          ],
+          "defaultValue": [
+            ""
+          ],
+          "inputType": "input"
+        }
+      ]
+    }
+  ]
+}

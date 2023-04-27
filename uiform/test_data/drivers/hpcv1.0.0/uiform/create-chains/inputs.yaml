@@ -1,0 +1,67 @@
+inputs:
+  - id: 'chain/Input'
+    sub: ['chain/self/Input', 'chain/nodes/Input', 'nodes/Input']
+
+  - id: 'chain/self/Input'
+    title:
+      text: '联盟配置'
+    sub: ['chain/base/Input', 'chain/advance/Input']
+
+  - id: 'chain/base/Input'
+    fields: [
+      'chain/name',
+      'chain/organization',
+      'chain/consensus',
+    ]
+
+  - id: 'chain/advance/Input'
+    title:
+      text: '高级选项'
+    fold: true
+    fields: [
+      'chain/implementation',
+      'chain/crypto',
+      'chain/namespace',
+      'chain/ca',
+      'chain/packageSize',
+      'chain/packageTime',
+    ]
+
+  - id: 'chain/nodes/Input'
+    title:
+      text: '节点配置'
+    fields: ['chain/nodeCount/VP']
+
+  - id: 'nodes/Input'
+    title:
+      text: '部署配置'
+    type: 'tableMerge'
+    sub: ['chain/nodeCount/VP/Input']
+
+  - id: 'chain/nodeCount/VP/Input'
+    type: 'table'
+    sub: []
+
+  - id: 'chain/nodeCount/VP/${index}/Input'
+    type: 'tableRow'
+    fields: [
+      'nodes/VP/${index}/name',
+      'nodes/VP/${index}/type',
+      'nodes/VP/${index}/Button',
+    ]
+
+  - id: 'nodes/VP/${index}/advance/Input'
+    title:
+      text: '节点配置'
+    depend: 'hosts'
+    fields: [
+      'nodes/VP/${index}/jsonRpcPort',
+      'nodes/VP/${index}/restfulRpcPort',
+      'nodes/VP/${index}/websocketPort',
+      'nodes/VP/${index}/jvmPort',
+      'nodes/VP/${index}/ledgerPort',
+      'nodes/VP/${index}/gRpcPort',
+      'nodes/VP/${index}/domain',
+      'nodes/VP/${index}/domains',
+    ]
+

@@ -1,0 +1,10 @@
+inputs:
+  - id: 'host/Input'
+    title:
+      text: '创建主机'
+    fields: ['host/servername',
+             'host/zone',
+             'host/bandwidth',
+             'host/rootdisk',
+             'host/datadisk']
+    depend: 'credentials'

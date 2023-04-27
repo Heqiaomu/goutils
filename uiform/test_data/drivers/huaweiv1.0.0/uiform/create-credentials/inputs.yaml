@@ -1,0 +1,8 @@
+inputs:
+  - id: 'credential/Input'
+    title:
+      text: '创建凭证'
+    fields: ['credential/form_sdk_zone',
+             'credential/form_sdk_project_id',
+             'credential/form_sdk_key',
+             'credential/form_sdk_srt']

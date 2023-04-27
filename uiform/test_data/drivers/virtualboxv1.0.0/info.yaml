@@ -1,0 +1,14 @@
+name:
+  id: virtualbox
+  text: '虚拟机'
+version: v1.0.0
+type: host
+resources: [hosts,credentials]
+logo: ./virtualbox.svg
+actions:
+  - name:
+      id: create
+      text: '创建'
+      desc: '创建虚拟机'
+    target: hosts
+exePath: 'exe/hpc'

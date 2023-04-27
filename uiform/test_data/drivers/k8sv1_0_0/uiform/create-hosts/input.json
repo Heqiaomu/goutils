@@ -1,0 +1,172 @@
+{
+  "id": "host/depend/Input",
+  "fold": false,
+  "showType": "list",
+  "subInputs": [
+    {
+      "id": "host/depend/credentials/Input",
+      "title": {
+        "text": "云凭证配置"
+      },
+      "fold": false,
+      "showType": "list",
+      "fields": [
+        {
+          "id": "host/credentials/id",
+          "title": {
+            "text": "凭证名称"
+          },
+          "edit": true,
+          "value": [
+            ""
+          ],
+          "defaultValue": [
+            ""
+          ],
+          "inputType": "select",
+          "validate": {
+            "@type": "type.googleapis.com/ui.ValidateSelect",
+            "validateDes": "请选择1个凭证名称",
+            "require": true,
+            "maxCount": "1",
+            "minCount": "1"
+          },
+          "buttons": [
+            {
+              "id": "host/credentials/create/Button",
+              "title": {
+                "text": "创建凭证"
+              },
+              "edit": true,
+              "value": [
+                ""
+              ],
+              "defaultValue": [
+                ""
+              ],
+              "inputReacts": [
+                {
+                  "triggerRegex": ".*",
+                  "reactType": "showInput",
+                  "urlReact": {
+                    "method": "get",
+                    "url": "/drivers/${drivers/host/id}/actions/create-credential"
+                  }
+                }
+              ],
+              "inputType": "button"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "host/Input",
+      "title": {
+        "text": "创建主机"
+      },
+      "fold": false,
+      "showType": "list",
+      "fields": [
+        {
+          "id": "host/Namespace",
+          "title": {
+            "text": "命名空间"
+          },
+          "edit": true,
+          "value": [
+            ""
+          ],
+          "defaultValue": [
+            ""
+          ],
+          "inputType": "input"
+        },
+        {
+          "id": "host/AutoCreatePV",
+          "title": {
+            "text": "是否自动创建PV"
+          },
+          "edit": true,
+          "value": [
+            ""
+          ],
+          "defaultValue": [
+            ""
+          ],
+          "inputType": "input"
+        },
+        {
+          "id": "host/ApplyStorageClass",
+          "title": {
+            "text": "是否使用StorageClass"
+          },
+          "edit": true,
+          "value": [
+            ""
+          ],
+          "defaultValue": [
+            ""
+          ],
+          "inputType": "input"
+        },
+        {
+          "id": "host/ApplyPVTemplate",
+          "title": {
+            "text": "是否使用PV模板"
+          },
+          "edit": true,
+          "value": [
+            ""
+          ],
+          "defaultValue": [
+            ""
+          ],
+          "inputType": "input"
+        },
+        {
+          "id": "host/StorageClassName",
+          "title": {
+            "text": "提供StorageClass名称"
+          },
+          "edit": true,
+          "value": [
+            ""
+          ],
+          "defaultValue": [
+            ""
+          ],
+          "inputType": "input"
+        },
+        {
+          "id": "host/PVTemplate",
+          "title": {
+            "text": "提供PV模板"
+          },
+          "edit": true,
+          "value": [
+            ""
+          ],
+          "defaultValue": [
+            ""
+          ],
+          "inputType": "input"
+        },
+        {
+          "id": "host/PVNameTemplate",
+          "title": {
+            "text": "提供PV名称模板"
+          },
+          "edit": true,
+          "value": [
+            ""
+          ],
+          "defaultValue": [
+            ""
+          ],
+          "inputType": "input"
+        }
+      ]
+    }
+  ]
+}

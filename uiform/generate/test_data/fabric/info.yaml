@@ -1,0 +1,43 @@
+name:
+  id: fabric
+  text: 'Fabric'
+version: v1_0_5
+type: chain
+resources:  [chains,nodes]
+logo: ./Fabric.svg
+actions:
+  - id: create-chains
+    name:
+      id: create
+      text: '创建'
+      desc: '创建Fabric'
+    target: chains
+  - id: remove-chain
+    name:
+      id: remove
+      text: '删除'
+      desc: '删除Fabric'
+    target: chain
+    states: [unavailable, available, stopped]
+  - id: remove-node
+    name:
+      id: remove
+      text: '删除'
+      desc: '删除Fabric节点'
+    target: node
+    states: [unavailable, available, stopped]
+  - id: add-node
+    name:
+      id: add
+      text: '新增'
+      desc: '新增Fabric节点'
+    target: node
+  - id: upgrade-chain
+    name:
+      id: upgrade
+      text: '升级驱动'
+      desc: '升级Fabric驱动'
+    target: chain
+    states: [unavailable, available, stopped]
+exePath: 'exe/driver'
+id: fabricv1_0_5

@@ -1,0 +1,5 @@
+inputs:
+  - id: 'credential/Input'
+    title:
+      text: '创建凭证'
+    fields: ['credential/kubeConfig']

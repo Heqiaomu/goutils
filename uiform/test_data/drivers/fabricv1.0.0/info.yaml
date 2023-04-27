@@ -1,0 +1,14 @@
+name:
+  id: hpc
+  text: 'Hyperchain'
+version: v1.0.0
+type: host
+resources: [chains,nodes]
+logo: ./Hyperchain.svg
+actions:
+  - id: do
+    name:
+      text: '创建'
+      desc: '创建Hyperchain'
+    target: chains
+exepath: 'exe'

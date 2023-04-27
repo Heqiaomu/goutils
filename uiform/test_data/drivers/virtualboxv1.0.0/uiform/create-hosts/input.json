@@ -1,0 +1,38 @@
+{
+  "id": "host/Input",
+  "title": {
+    "text": "主机配置"
+  },
+  "fold": false,
+  "showType": "list",
+  "fields": [
+    {
+      "id": "host/name",
+      "title": {
+        "text": "主机名"
+      },
+      "edit": true,
+      "value": [
+        ""
+      ],
+      "defaultValue": [
+        ""
+      ],
+      "inputType": "input"
+    },
+    {
+      "id": "host/form_sdk_zone",
+      "title": {
+        "text": "域名"
+      },
+      "edit": true,
+      "value": [
+        ""
+      ],
+      "defaultValue": [
+        ""
+      ],
+      "inputType": "input"
+    }
+  ]
+}

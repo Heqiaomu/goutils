@@ -1,0 +1,11 @@
+fieldReactions:
+  - field: 'chain/mode'
+    reactions:
+      - regex: 'A'
+        type: 'showInput'
+        input: 'chain/A/Input'
+        target: 'chain/nodes/Input'
+      - regex: 'B'
+        type: 'showInput'
+        input: 'chain/B/Input'
+        target: 'chain/nodes/Input'

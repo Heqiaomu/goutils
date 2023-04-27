@@ -1,0 +1,13 @@
+fieldReactions:
+  - field: 'chain/nodeCount/VP'
+    reactions:
+      - regex: '\d+'
+        type: 'showInputsByNumber'
+        input: 'chain/nodeCount/VP/${index}/Input'
+        target: 'chain/nodeCount/VP/Input'
+
+  - field: 'nodes/VP/${index}/Button'
+    reactions:
+      - regex: '.*'
+        type: 'showInput'
+        input: 'nodes/VP/${index}/advance/Input'

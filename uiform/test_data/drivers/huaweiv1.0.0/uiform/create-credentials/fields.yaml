@@ -1,0 +1,13 @@
+fields:
+  - id: 'credential/form_sdk_zone'
+    title:
+      text: '区域'
+  - id: 'credential/form_sdk_project_id'
+    title:
+      text: '项目ID'
+  - id: 'credential/form_sdk_key'
+    title:
+      text: '访问秘钥ID'
+  - id: 'credential/form_sdk_srt'
+    title:
+      text: '访问秘钥'

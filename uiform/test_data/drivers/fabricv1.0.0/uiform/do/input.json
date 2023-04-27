@@ -1,0 +1,134 @@
+{
+  "id": "chain/Input",
+  "fold": false,
+  "showType": "list",
+  "subInputs": [
+    {
+      "id": "chain/self/Input",
+      "title": {
+        "text": "联盟配置"
+      },
+      "fold": false,
+      "showType": "list",
+      "fields": [
+        {
+          "id": "chain/mode",
+          "title": {
+            "text": "联盟链名称"
+          },
+          "edit": true,
+          "value": [
+            ""
+          ],
+          "defaultValue": [
+            "A"
+          ],
+          "inputReacts": [
+            {
+              "triggerRegex": "A",
+              "reactType": "showInput",
+              "inputs": [
+                {
+                  "id": "chain/A/Input",
+                  "title": {
+                    "text": "A的配置"
+                  },
+                  "fold": false,
+                  "showType": "list",
+                  "fields": [
+                    {
+                      "id": "chain/name",
+                      "title": {
+                        "text": "联盟链名称"
+                      },
+                      "edit": true,
+                      "value": [
+                        ""
+                      ],
+                      "defaultValue": [
+                        ""
+                      ],
+                      "inputType": "input",
+                      "validate": {
+                        "@type": "type.googleapis.com/ui.ValidateInput",
+                        "validateDes": "2-20个汉字、字母和数字至少包含1种",
+                        "require": true,
+                        "requireDes": "请输入联盟链名称",
+                        "regex": "^[a-zA-Z0-9\\u4e00-\\u9fa5]{2,20}$",
+                        "regexDes": "请输入符合格式的联盟链名称",
+                        "placeHolder": "请输入"
+                      }
+                    }
+                  ]
+                }
+              ],
+              "targetInputId": "chain/nodes/Input"
+            },
+            {
+              "triggerRegex": "B",
+              "reactType": "showInput",
+              "inputs": [
+                {
+                  "id": "chain/B/Input",
+                  "title": {
+                    "text": "B的配置"
+                  },
+                  "fold": false,
+                  "showType": "list",
+                  "fields": [
+                    {
+                      "id": "chain/name",
+                      "title": {
+                        "text": "联盟链名称"
+                      },
+                      "edit": true,
+                      "value": [
+                        ""
+                      ],
+                      "defaultValue": [
+                        ""
+                      ],
+                      "inputType": "input",
+                      "validate": {
+                        "@type": "type.googleapis.com/ui.ValidateInput",
+                        "validateDes": "2-20个汉字、字母和数字至少包含1种",
+                        "require": true,
+                        "requireDes": "请输入联盟链名称",
+                        "regex": "^[a-zA-Z0-9\\u4e00-\\u9fa5]{2,20}$",
+                        "regexDes": "请输入符合格式的联盟链名称",
+                        "placeHolder": "请输入"
+                      }
+                    }
+                  ]
+                }
+              ],
+              "targetInputId": "chain/nodes/Input"
+            }
+          ],
+          "inputType": "radioButton",
+          "validate": {
+            "@type": "type.googleapis.com/ui.ValidateSelect",
+            "require": true,
+            "options": [
+              {
+                "id": "A",
+                "text": "A"
+              },
+              {
+                "id": "B",
+                "text": "B"
+              }
+            ],
+            "maxCount": "1",
+            "minCount": "1"
+          }
+        }
+      ]
+    },
+    {
+      "id": "chain/nodes/Input",
+      "fold": false,
+      "showType": "list"
+    }
+  ]
+}

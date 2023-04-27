@@ -1,0 +1,8 @@
+inputs:
+  - key: 'credentialConfig'
+    tag: 'depend/credentials'
+    title:
+      text: "凭证配置"
+    fields: ['credentialID']
+
+

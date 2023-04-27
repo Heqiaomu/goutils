@@ -1,0 +1,21 @@
+inputs:
+  - id: 'chain/Input'
+    sub: ['chain/self/Input', 'chain/nodes/Input']
+
+  - id: 'chain/self/Input'
+    title:
+      text: '联盟配置'
+    fields: ['chain/mode']
+
+  - id:  'chain/nodes/Input'
+    sub: []
+
+  - id:  'chain/A/Input'
+    title:
+      text: 'A的配置'
+    fields: [ 'chain/name' ]
+
+  - id:  'chain/B/Input'
+    title:
+      text: 'B的配置'
+    fields: [ 'chain/name' ]

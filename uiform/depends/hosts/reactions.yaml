@@ -1,0 +1,18 @@
+fieldReactions:
+  - field: 'hosts/mode'
+    reactions:
+      - regex: 'DepositHost'
+        type: 'showInput'
+        urlReact:
+          method: 'get'
+          url: '/resources/drivers/functions/deposit-hosts'
+      - regex: 'ExistedHost'
+        type: 'showInput'
+        urlReact:
+          method: 'get'
+          url: '/resources/hosts/functions/id-list'
+      - regex: 'CreateHost'
+        type: 'showInput'
+        urlReact:
+          method: 'get'
+          url: '/resources/drivers/functions/create-hosts'

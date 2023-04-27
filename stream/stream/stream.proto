@@ -1,0 +1,24 @@
+syntax = "proto3";//声明proto的版本 只能 是3，才支持 grpc
+
+//声明 包名
+package stream;
+
+//声明grpc服务
+service Stream {
+  /*
+  以下 分别是 服务端 推送流， 客户端 推送流 ，双向流。
+  */
+  rpc GetStream (StreamRequest) returns (stream StreamResponse){}
+  rpc PutStream (stream StreamRequest) returns (StreamResponse){}
+  rpc AllStream (stream StreamRequest) returns (stream StreamResponse){}
+}
+
+
+//stream请求结构
+message StreamRequest {
+  string input = 1;
+}
+//stream返回结构
+message StreamResponse {
+  string output = 1;
+}

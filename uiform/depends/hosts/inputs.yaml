@@ -1,0 +1,3 @@
+inputs:
+  - id: 'depend/hosts/Input'
+    fields: ['hosts/mode']
